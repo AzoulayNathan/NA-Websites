@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Inter', -apple-system, sans-serif;
+
+    /* NA Websites palette */
+    --sand: 37 33% 85%;
+    --quartz: 36 27% 95%;
+    --olive: 150 18% 30%;
+    --deep-green: 157 34% 18%;
+    --terracotta: 16 51% 47%;
+    --sky-blue: 197 26% 75%;
+    --ink: 60 5% 10%;
+
+    /* Theme system */
+    --theme-bg: var(--quartz);
+    --theme-surface: var(--sand);
+    --theme-text: var(--ink);
+    --theme-muted: 60 3% 45%;
+    --theme-accent: var(--olive);
+    --theme-deep: var(--deep-green);
+    --theme-line: 157 34% 18% / 0.18;
+    --theme-glow: 197 26% 75% / 0.15;
+
+    /* Shadcn tokens mapped */
+    --background: var(--quartz);
+    --foreground: var(--ink);
+    --card: 0 0% 100%;
+    --card-foreground: var(--ink);
+    --popover: 36 27% 95%;
+    --popover-foreground: var(--ink);
+    --primary: var(--deep-green);
+    --primary-foreground: 36 27% 95%;
+    --secondary: var(--sand);
+    --secondary-foreground: var(--ink);
+    --muted: var(--sand);
+    --muted-foreground: 60 3% 45%;
+    --accent: var(--olive);
+    --accent-foreground: 36 27% 95%;
+    --destructive: var(--terracotta);
+    --destructive-foreground: 36 27% 95%;
+    --border: 37 20% 80%;
+    --input: 37 20% 80%;
+    --ring: var(--olive);
+    --radius: 0.25rem;
+
+    --sidebar-background: var(--quartz);
+    --sidebar-foreground: var(--ink);
+    --sidebar-primary: var(--deep-green);
+    --sidebar-primary-foreground: 36 27% 95%;
+    --sidebar-accent: var(--sand);
+    --sidebar-accent-foreground: var(--ink);
+    --sidebar-border: 37 20% 80%;
+    --sidebar-ring: var(--olive);
+  }
+
+  .dark {
+    --background: var(--deep-green);
+    --foreground: 36 27% 95%;
+    --card: 157 34% 15%;
+    --card-foreground: 36 27% 95%;
+    --popover: 157 34% 15%;
+    --popover-foreground: 36 27% 95%;
+    --primary: var(--sand);
+    --primary-foreground: var(--deep-green);
+    --secondary: 157 30% 22%;
+    --secondary-foreground: 36 27% 95%;
+    --muted: 157 30% 22%;
+    --muted-foreground: 37 15% 65%;
+    --accent: var(--sky-blue);
+    --accent-foreground: var(--deep-green);
+    --destructive: var(--terracotta);
+    --destructive-foreground: 36 27% 95%;
+    --border: 157 25% 25%;
+    --input: 157 25% 25%;
+    --ring: var(--sky-blue);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+  .font-sans {
+    font-family: var(--font-sans);
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background: hsl(var(--olive) / 0.2);
+  color: hsl(var(--ink));
+}
+
+/* Subtle grain texture overlay */
+.grain-overlay::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  z-index: 9999;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--quartz));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--olive) / 0.3);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--olive) / 0.5);
+}

@@ -1,0 +1,10 @@
+import { readFileSync, writeFileSync } from 'fs';
+const p = 'src/components/layout/Navbar.jsx';
+let s = readFileSync(p, 'utf8');
+const m = 'motion' + '.div';
+const d = 'div';
+s = s.replace('<' + m + ' className="hidden md:flex items-center gap-8">', '<' + d + ' className="hidden md:flex items-center gap-8">');
+s = s.replace('</' + m + '>\n\n          <' + m + ' className="md:hidden', '</' + d + '>\n\n          <' + d + ' className="md:hidden');
+s = s.replace('</' + m + '>\n        </' + m + '>\n      </nav>', '</' + d + '>\n        </' + d + '>\n      </nav>');
+writeFileSync(p, s);
+console.log('ok');
