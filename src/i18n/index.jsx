@@ -17,10 +17,18 @@ function getNested(obj, path) {
 export function I18nProvider({ children }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const paramLang = searchParams.get('lang');
+  const readStoredLang = () => {
+    try {
+      return localStorage.getItem(STORAGE_KEY);
+    } catch {
+      return null;
+    }
+  };
+
   const initial =
     paramLang && SUPPORTED_LANGS.includes(paramLang)
       ? paramLang
-      : localStorage.getItem(STORAGE_KEY) || 'en';
+      : readStoredLang() || 'en';
 
   const [lang, setLangState] = useState(initial);
 
@@ -32,7 +40,11 @@ export function I18nProvider({ children }) {
 
   useEffect(() => {
     document.documentElement.lang = lang;
-    localStorage.setItem(STORAGE_KEY, lang);
+    try {
+      localStorage.setItem(STORAGE_KEY, lang);
+    } catch {
+      /* private mode / blocked storage */
+    }
   }, [lang]);
 
   const setLang = (next) => {

@@ -101,7 +101,7 @@ export default function HeroSection() {
       />
 
       <div className="relative max-w-[1400px] mx-auto px-6 md:px-10 w-full pt-28 pb-16 lg:py-32">
-        <motion.div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           <div className="lg:col-span-5">
             <motion.p
               initial={{ opacity: 0 }}
@@ -177,7 +177,7 @@ export default function HeroSection() {
               ))}
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
