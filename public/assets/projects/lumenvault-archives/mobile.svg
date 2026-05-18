@@ -1,0 +1,10 @@
+<svg width="390" height="844" viewBox="0 0 390 844" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="390" height="844" fill="#141820"/>
+  <rect x="560" y="100" width="200" height="140" fill="none" stroke="#AFC8D1" stroke-width="0.6" opacity="0.4"/><path d="M580 140 L740 140 M580 170 L700 170 M580 200 L720 200" stroke="#AFC8D1" stroke-width="0.4" opacity="0.25"/>
+  <line x1="195" y1="0" x2="195" y2="844" stroke="#AFC8D1" stroke-width="0.5" opacity="0.1"/>
+  <rect x="24" y="120" width="342" height="200" fill="rgba(246,243,237,0.06)" rx="2"/>
+  <rect x="40" y="148" width="200" height="14" fill="#F6F3ED" opacity="0.6" rx="1"/>
+  <rect x="40" y="172" width="140" height="8" fill="#F6F3ED" opacity="0.25" rx="1"/>
+  <rect x="40" y="200" width="90" height="28" fill="#AFC8D1" opacity="0.75" rx="2"/>
+  <text x="40" y="780" font-family="Georgia, serif" font-size="18" fill="#F6F3ED" opacity="0.9">LumenVault Archives</text>
+</svg>

@@ -4,10 +4,10 @@ import { useI18n, SUPPORTED_LANGS } from '@/i18n';
 const labels = { en: 'EN', fr: 'FR', es: 'ES' };
 
 export default function LanguageSwitcher({ className = '' }) {
-  const { lang, setLang } = useI18n();
+  const { lang, setLang, t } = useI18n();
 
   return (
-    <div className={`flex items-center gap-1 ${className}`} role="group" aria-label="Language">
+    <div className={`flex items-center gap-1 ${className}`} role="group" aria-label={t('aria.language')}>
       {SUPPORTED_LANGS.map((code) => (
         <button
           key={code}

@@ -7,7 +7,8 @@ import SeamLine from '../components/shared/SeamLine';
 import ContactForm from '../components/contact/ContactForm';
 
 export default function Contact() {
-  const { t } = useI18n();
+  const { t, raw } = useI18n();
+  const expectItems = raw('contact.expectItems') || [];
 
   return (
     <motion.div className="bg-quartz min-h-screen">
@@ -44,7 +45,7 @@ export default function Contact() {
               <SeamLine className="mb-10" />
 
               <p className="text-[11px] uppercase tracking-[0.2em] text-ink/35 mb-6">
-                Direct contact
+                {t('contact.directContact')}
               </p>
 
               <a
@@ -57,14 +58,10 @@ export default function Contact() {
 
               <div className="mt-12 p-6 bg-sand/40 rounded-sm">
                 <p className="text-[11px] uppercase tracking-[0.2em] text-ink/35 mb-3">
-                  What to expect
+                  {t('contact.whatToExpect')}
                 </p>
                 <div className="space-y-3">
-                  {[
-                    'A response within 24–48 hours',
-                    'A focused conversation about the project',
-                    'A clear direction before any commitment',
-                  ].map((item, i) => (
+                  {expectItems.map((item, i) => (
                     <div key={i} className="flex items-start gap-2.5">
                       <div className="w-3 h-[1px] bg-olive/20 mt-2.5 flex-shrink-0" />
                       <p className="text-[14px] text-ink/45 font-light">{item}</p>
@@ -75,7 +72,7 @@ export default function Contact() {
 
               <div className="mt-10">
                 <p className="text-[11px] uppercase tracking-[0.2em] text-ink/25 mb-3">
-                  Also available at
+                  {t('contact.alsoAvailable')}
                 </p>
                 <a
                   href="https://na-studio.pages.dev/"
@@ -83,7 +80,7 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   className="text-[13px] text-olive/50 hover:text-olive transition-colors duration-300"
                 >
-                  Nathan / NA Studio →
+                  {t('nav.studio')} →
                 </a>
               </div>
             </motion.div>
@@ -95,7 +92,7 @@ export default function Contact() {
       <section className="bg-deep-green py-20 md:py-28">
         <div className="max-w-[700px] mx-auto px-6 md:px-10 text-center">
           <RevealText as="p" className="font-serif text-[24px] md:text-[32px] font-light text-quartz/60 italic leading-relaxed">
-            "The best websites don't just present information. They make decisions clearer."
+            {t('contact.quote')}
           </RevealText>
           <motion.div
             initial={{ scaleX: 0 }}

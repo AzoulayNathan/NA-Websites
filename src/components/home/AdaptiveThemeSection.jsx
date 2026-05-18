@@ -3,82 +3,56 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useScrollReveal } from '@/lib/useScrollReveal';
 import RevealText from '../shared/RevealText';
 import { projects } from '@/lib/projects';
+import { useI18n } from '@/i18n';
 
-const states = [
-  {
-    key: 'local',
-    label: 'Local',
-    meta: 'TRUST / CLARITY / CONTACT',
-    text: 'Make the offer obvious, the company credible and the next action easy.',
-    bg: 'bg-sand',
-    bgHex: '#E8DFC9',
-    textColor: 'text-ink',
-    mutedColor: 'text-ink/45',
-    project: projects.find(p => p.slug === 'premium-local-sites'),
-    accentColor: '#3F5A4F',
-    seam: 'bg-olive/20',
-  },
-  {
-    key: 'saas',
-    label: 'SaaS',
-    meta: 'FLOW / HIERARCHY / LOGIC',
-    text: 'Make the product easier to understand, navigate and use.',
-    bg: 'bg-quartz',
-    bgHex: '#F6F3ED',
-    textColor: 'text-ink',
-    mutedColor: 'text-ink/45',
-    project: projects.find(p => p.slug === 'onepager-studio'),
-    accentColor: '#AFC8D1',
-    seam: 'bg-sky-blue/20',
-  },
-  {
-    key: 'signature',
-    label: 'Signature',
-    meta: 'ATMOSPHERE / MEMORY / IDENTITY',
-    text: 'Build a visual world people remember.',
-    bg: 'bg-deep-green',
-    bgHex: '#1F3D33',
-    textColor: 'text-quartz',
-    mutedColor: 'text-quartz/45',
-    project: projects.find(p => p.slug === 'dreams'),
-    accentColor: '#AFC8D1',
-    seam: 'bg-sky-blue/20',
-  },
+const STATE_CONFIG = [
+  { key: 'local', slug: 'plumber-template-01', bg: 'bg-sand', bgHex: '#E8DFC9', textColor: 'text-ink', mutedColor: 'text-ink/45', accentColor: '#3F5A4F', seam: 'bg-olive/20' },
+  { key: 'brand', slug: 'dropdrop', bg: 'bg-quartz', bgHex: '#F6F3ED', textColor: 'text-ink', mutedColor: 'text-ink/45', accentColor: '#C4A574', seam: 'bg-olive/20' },
+  { key: 'saas', slug: 'questline', bg: 'bg-quartz', bgHex: '#F6F3ED', textColor: 'text-ink', mutedColor: 'text-ink/45', accentColor: '#AFC8D1', seam: 'bg-sky-blue/20' },
+  { key: 'signature', slug: 'dreams', bg: 'bg-deep-green', bgHex: '#1F3D33', textColor: 'text-quartz', mutedColor: 'text-quartz/45', accentColor: '#AFC8D1', seam: 'bg-sky-blue/20' },
 ];
 
 export default function AdaptiveThemeSection() {
+  const { t } = useI18n();
   const [active, setActive] = useState(0);
-  const current = states[active];
   const [ref, visible] = useScrollReveal(0.1);
+
+  const states = STATE_CONFIG.map((cfg) => ({
+    ...cfg,
+    label: t(`adaptive.states.${cfg.key}.label`),
+    meta: t(`adaptive.states.${cfg.key}.meta`),
+    text: t(`adaptive.states.${cfg.key}.text`),
+    project: projects.find((p) => p.slug === cfg.slug),
+  }));
+
+  const current = states[active];
 
   return (
     <section className="py-24 md:py-36 bg-quartz overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 md:px-10">
-        {/* Header */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 mb-14 items-end">
           <div>
             <RevealText as="h2" className="font-serif text-[30px] md:text-[48px] leading-[1.1] font-light text-ink">
-              One studio frame.
+              {t('adaptive.heading1')}
             </RevealText>
             <RevealText as="h2" delay={0.08} className="font-serif text-[30px] md:text-[48px] leading-[1.1] font-light text-ink/50 italic">
-              Different digital worlds.
+              {t('adaptive.heading2')}
             </RevealText>
           </div>
           <RevealText as="p" delay={0.15} className="text-[15px] text-ink/40 font-light">
-            A plumber, a SaaS tool and a cinematic concept should not feel the same.
+            {t('adaptive.sub')}
           </RevealText>
         </div>
 
-        <div ref={ref}>
-          {/* Studio dial selector */}
-          <div className="flex gap-0 mb-10 border-t border-olive/8">
+        <motion.div ref={ref}>
+          <div className="flex gap-0 mb-10 border-t border-olive/8 overflow-x-auto">
             {states.map((s, i) => (
               <button
                 key={s.key}
+                type="button"
                 onClick={() => setActive(i)}
-                className="relative flex-1 py-6 text-left transition-all duration-400"
+                className="relative flex-1 min-w-[80px] py-6 text-left transition-all duration-400"
               >
-                {/* Active seam indicator */}
                 {active === i && (
                   <motion.div
                     layoutId="dial-indicator"
@@ -87,13 +61,11 @@ export default function AdaptiveThemeSection() {
                     transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                   />
                 )}
-
                 <span className={`text-[11px] uppercase tracking-[0.18em] transition-all duration-300 block ${
                   active === i ? 'text-ink font-medium' : 'text-ink/28 hover:text-ink/50'
                 }`}>
                   {s.label}
                 </span>
-
                 {active === i && (
                   <motion.p
                     initial={{ opacity: 0, y: 4 }}
@@ -108,7 +80,6 @@ export default function AdaptiveThemeSection() {
             ))}
           </div>
 
-          {/* Preview area */}
           <AnimatePresence mode="wait">
             <motion.div
               key={current.key}
@@ -119,7 +90,6 @@ export default function AdaptiveThemeSection() {
               className={`${current.bg} rounded-sm overflow-hidden relative`}
             >
               <div className="relative grid grid-cols-1 md:grid-cols-2 gap-0 min-h-[320px]">
-                {/* Text side */}
                 <div className="p-8 md:p-12 flex flex-col justify-center">
                   <p className={`text-[9px] uppercase tracking-[0.3em] ${current.mutedColor} mb-5`}>
                     {current.meta}
@@ -127,7 +97,6 @@ export default function AdaptiveThemeSection() {
                   <h3 className={`font-serif text-[26px] md:text-[38px] leading-[1.15] font-light ${current.textColor} mb-4`}>
                     {current.text}
                   </h3>
-                  {/* Seam line reveal on switch */}
                   <motion.div
                     initial={{ scaleX: 0 }}
                     animate={{ scaleX: 1 }}
@@ -136,7 +105,6 @@ export default function AdaptiveThemeSection() {
                   />
                 </div>
 
-                {/* Image side with seam wipe */}
                 <div className="relative overflow-hidden min-h-[200px] md:min-h-0">
                   {current.project?.coverImage && (
                     <motion.div
@@ -153,7 +121,6 @@ export default function AdaptiveThemeSection() {
                       />
                     </motion.div>
                   )}
-                  {/* Vertical seam across preview */}
                   <motion.div
                     initial={{ scaleY: 0 }}
                     animate={{ scaleY: 1 }}
@@ -166,7 +133,7 @@ export default function AdaptiveThemeSection() {
               </div>
             </motion.div>
           </AnimatePresence>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

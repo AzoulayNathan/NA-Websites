@@ -3,18 +3,25 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { useScrollReveal } from '@/lib/useScrollReveal';
+import { useI18n } from '@/i18n';
 
 export default function ContactClose() {
+  const { t } = useI18n();
   const [ref, visible] = useScrollReveal(0.15);
 
   return (
     <section ref={ref} className="relative py-28 md:py-44 bg-deep-green overflow-hidden">
-      {/* Background atmospheric glow */}
+      <motion.div
+        initial={{ scaleX: 0 }}
+        animate={visible ? { scaleX: 1 } : {}}
+        transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[min(70%,480px)] h-[1px] bg-quartz/10 origin-center"
+      />
+
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-sky-blue/6 rounded-full blur-[120px]" />
       </div>
 
-      {/* Vertical seam — ceremonial */}
       <motion.div
         initial={{ scaleY: 0 }}
         animate={visible ? { scaleY: 1 } : {}}
@@ -22,7 +29,6 @@ export default function ContactClose() {
         className="absolute left-1/2 top-10 bottom-10 w-[1px] bg-quartz/6 origin-top"
       />
 
-      {/* Light sweep — once */}
       <motion.div
         initial={{ x: '-100%', opacity: 0 }}
         animate={visible ? { x: '200%', opacity: [0, 0.3, 0] } : {}}
@@ -37,7 +43,7 @@ export default function ContactClose() {
           transition={{ delay: 0.3, duration: 0.6 }}
           className="text-[10px] uppercase tracking-[0.3em] text-quartz/25 mb-8"
         >
-          NA Websites / Start a project
+          {t('contactClose.eyebrow')}
         </motion.p>
 
         <motion.h2
@@ -46,7 +52,7 @@ export default function ContactClose() {
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="font-serif text-[34px] md:text-[54px] lg:text-[62px] leading-[1.08] font-light text-quartz"
         >
-          Have a project that deserves better than a template?
+          {t('contactClose.title')}
         </motion.h2>
 
         <motion.p
@@ -55,7 +61,7 @@ export default function ContactClose() {
           transition={{ delay: 0.35, duration: 0.7 }}
           className="mt-6 text-[15px] md:text-[16px] text-quartz/40 font-light max-w-md mx-auto leading-relaxed"
         >
-          Local business, SaaS interface, product landing page or stranger digital ambition — let's shape it into something clear, sharp and memorable.
+          {t('contactClose.body')}
         </motion.p>
 
         <motion.div
@@ -64,13 +70,12 @@ export default function ContactClose() {
           transition={{ delay: 0.65, duration: 0.6 }}
           className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-8"
         >
-          {/* Primary — dark variant */}
           <Link
             to="/contact"
             className="group inline-flex items-center gap-2 text-[13px] uppercase tracking-[0.15em] font-medium text-quartz"
           >
             <span className="relative">
-              Start a project
+              {t('contactClose.cta')}
               <span className="absolute -bottom-1 left-0 h-[1px] bg-sky-blue/50 w-0 group-hover:w-full transition-all duration-400 origin-left" />
             </span>
             <ArrowRight className="w-3.5 h-3.5 text-sky-blue group-hover:translate-x-1 transition-transform duration-300" />
@@ -80,7 +85,7 @@ export default function ContactClose() {
             to="/work"
             className="text-[13px] uppercase tracking-[0.12em] text-quartz/28 hover:text-quartz/55 transition-colors duration-300"
           >
-            View selected work
+            {t('contactClose.secondary')}
           </Link>
         </motion.div>
       </div>

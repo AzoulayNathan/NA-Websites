@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { categories } from '@/lib/projects';
+import { useI18n } from '@/i18n';
 
 const miniTextures = {
   local: (
@@ -42,6 +43,8 @@ const miniTextures = {
 };
 
 export default function CategorySwitcher({ active, onSelect }) {
+  const { t } = useI18n();
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-olive/8">
       {categories.map((cat) => {
@@ -92,7 +95,7 @@ export default function CategorySwitcher({ active, onSelect }) {
                 ? isDark ? 'text-quartz translate-x-1' : 'text-ink translate-x-1'
                 : isDark ? 'text-quartz/35' : 'text-ink/35'
             }`}>
-              {cat.fullLabel}
+              {t(`categories.${cat.slug}`, cat.fullLabel)}
             </h3>
 
             {isActive && (

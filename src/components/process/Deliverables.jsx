@@ -2,18 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useScrollReveal } from '@/lib/useScrollReveal';
 import RevealText from '../shared/RevealText';
-
-const deliverables = [
-  { item: 'Website structure', detail: 'Pages, blocks, content hierarchy' },
-  { item: 'Visual direction', detail: 'Typography, palette, spacing system' },
-  { item: 'Copy logic', detail: 'Headlines, CTAs, structured body text' },
-  { item: 'Responsive implementation', detail: 'Mobile-first, cross-device tested' },
-  { item: 'Project assets', detail: 'Images, icons, design tokens' },
-  { item: 'Deployment-ready files', detail: 'Production build, domain-ready' },
-  { item: 'Iteration notes', detail: 'Documentation and next-step guide' },
-];
+import { useI18n } from '@/i18n';
 
 export default function Deliverables() {
+  const { t, raw } = useI18n();
+  const deliverables = raw('deliverables.items') || [];
   const [ref, visible] = useScrollReveal(0.08);
 
   return (
@@ -22,10 +15,10 @@ export default function Deliverables() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
           <div className="md:col-span-4">
             <RevealText as="p" className="text-[10px] uppercase tracking-[0.25em] text-olive/40 mb-3">
-              Deliverables
+              {t('process.deliverablesLabel')}
             </RevealText>
             <RevealText as="h2" delay={0.08} className="font-serif text-[26px] md:text-[36px] leading-[1.15] font-light text-ink">
-              What you receive at the end of every project.
+              {t('process.deliverablesTitle')}
             </RevealText>
           </div>
 
@@ -38,7 +31,6 @@ export default function Deliverables() {
                 transition={{ delay: i * 0.08, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 className="group flex items-start gap-4 border-t border-olive/8 py-5 hover:bg-sand/30 transition-colors duration-300 px-2"
               >
-                {/* Check line */}
                 <motion.div
                   initial={{ scaleX: 0 }}
                   animate={visible ? { scaleX: 1 } : {}}

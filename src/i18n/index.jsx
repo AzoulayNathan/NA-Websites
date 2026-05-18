@@ -63,6 +63,7 @@ export function I18nProvider({ children }) {
       lang,
       setLang,
       t: (key, fallback = '') => getNested(dict, key) ?? getNested(en, key) ?? fallback,
+      raw: (key) => getNested(dict, key) ?? getNested(en, key),
       projectCopy: (slug) => dict.projects?.[slug] || en.projects?.[slug] || {},
     }),
     [lang, dict],
