@@ -3,22 +3,24 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ProjectVisualFrame from '../shared/ProjectVisualFrame';
 import StudioCTA from '../shared/StudioCTA';
 import { usePreview } from '@/lib/PreviewContext';
-import { useI18n } from '@/i18n';
-import { projects } from '@/lib/projects';
+import { useI18n, useProjectText } from '@/i18n';
+import { projects, getProject, SHOWROOM_SLUG } from '@/lib/projects';
 
 // Local Business layout: 70/30 horizontal feature + slim secondary
-function LocalStage({ categoryProjects }) {
-  const [featured, ...rest] = categoryProjects;
-  if (!featured) return null;
+function LocalStageInner({ featured, rest }) {
+  const { openPreview } = usePreview();
+  const { t } = useI18n();
+  const featuredCopy = useProjectText(featured);
   return (
     <div className="space-y-4">
-      {/* Main feature */}
-      <motion.div
+      <motion.button
+        type="button"
         initial={{ clipPath: 'inset(0 0 100% 0)', opacity: 0 }}
         animate={{ clipPath: 'inset(0 0 0% 0)', opacity: 1 }}
         exit={{ clipPath: 'inset(0 0 100% 0)', opacity: 0 }}
         transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-        className="group relative bg-sand/60 rounded-sm overflow-hidden"
+        onClick={() => openPreview(featured)}
+        className="group relative bg-sand/60 rounded-sm overflow-hidden w-full text-left cursor-pointer"
       >
         <div className="grid grid-cols-1 md:grid-cols-12 min-h-[320px] md:min-h-[400px]">
           <div className="md:col-span-8 relative">
@@ -33,29 +35,35 @@ function LocalStage({ categoryProjects }) {
               <h3 className="font-serif text-[26px] md:text-[34px] leading-[1.1] font-light text-ink mb-3 group-hover:translate-x-1 transition-transform duration-500">
                 {featured.title}
               </h3>
-              <p className="text-[13px] text-ink/45 font-light leading-relaxed">{featured.microLine}</p>
+              <p className="text-[13px] text-ink/45 font-light leading-relaxed">{featuredCopy.microLine}</p>
               <div className="flex flex-wrap gap-1.5 mt-4">
-                {featured.tags.map(tag => (
+                {featuredCopy.tags.map((tag) => (
                   <span key={tag} className="text-[9px] uppercase tracking-[0.1em] px-2 py-1 border border-olive/10 text-ink/25 rounded-sm">{tag}</span>
                 ))}
               </div>
             </div>
             <div className="mt-8">
-              <StudioCTA to="/contact" variant="primary">Start a similar project</StudioCTA>
+              <span className="text-[12px] uppercase tracking-[0.15em] font-medium text-olive inline-flex items-center gap-2">
+                {t('work.viewVisual')}
+                <span aria-hidden>→</span>
+              </span>
             </div>
           </div>
         </div>
-      </motion.div>
+      </motion.button>
 
-      {/* Secondary rows */}
       {rest.map((p, i) => (
         <motion.div
           key={p.slug}
+          role="button"
+          tabIndex={0}
+          onClick={() => openPreview(p)}
+          onKeyDown={(e) => e.key === 'Enter' && openPreview(p)}
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0 }}
           transition={{ delay: 0.12 + i * 0.08, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="group relative bg-quartz/70 border border-olive/6 rounded-sm overflow-hidden grid grid-cols-12"
+          className="group relative bg-quartz/70 border border-olive/6 rounded-sm overflow-hidden grid grid-cols-12 cursor-pointer"
         >
           <div className="col-span-4 relative h-28 md:h-36">
             <ProjectVisualFrame project={p} className="w-full h-full" revealDelay={0.1} />
@@ -68,6 +76,12 @@ function LocalStage({ categoryProjects }) {
       ))}
     </div>
   );
+}
+
+function LocalStage({ categoryProjects }) {
+  const [featured, ...rest] = categoryProjects;
+  if (!featured) return null;
+  return <LocalStageInner featured={featured} rest={rest} />;
 }
 
 function BrandStage({ categoryProjects }) {
@@ -135,6 +149,7 @@ function BrandStage({ categoryProjects }) {
 
 // SaaS layout: asymmetric 12-col, feature 7, secondary 5, data labels
 function SaasStage({ categoryProjects }) {
+  const { t } = useI18n();
   const [featured, second, ...rest] = categoryProjects;
   if (!featured) return null;
   return (
@@ -167,7 +182,7 @@ function SaasStage({ categoryProjects }) {
                   <span key={tag} className="text-[9px] uppercase tracking-[0.1em] px-2 py-1 border border-sky-blue/12 text-ink/25 rounded-sm">{tag}</span>
                 ))}
               </div>
-              <StudioCTA to="/contact" variant="theme">Discuss this type of project</StudioCTA>
+              <StudioCTA to="/contact" variant="theme">{t('work.discuss')}</StudioCTA>
             </div>
           </motion.div>
         )}
@@ -217,6 +232,7 @@ function SaasStage({ categoryProjects }) {
 
 // Signature layout: stacked cinematic bands
 function SignatureStage({ categoryProjects }) {
+  const { t } = useI18n();
   const [featured, second, ...rest] = categoryProjects;
   if (!featured) return null;
   return (
@@ -234,13 +250,6 @@ function SignatureStage({ categoryProjects }) {
           <div className="absolute inset-0 bg-gradient-to-br from-sky-blue/8 via-transparent to-transparent pointer-events-none group-hover:opacity-150 transition-opacity duration-700" />
           <div className="relative h-52 md:h-72">
             <ProjectVisualFrame project={featured} className="w-full h-full" />
-            {/* Light leak */}
-            <motion.div
-              initial={{ x: '-100%', opacity: 0 }}
-              animate={{ x: '200%', opacity: [0, 0.35, 0] }}
-              transition={{ delay: 0.9, duration: 2.4, ease: 'easeInOut' }}
-              className="absolute top-0 left-0 w-1/4 h-full bg-gradient-to-r from-transparent via-sky-blue/8 to-transparent pointer-events-none"
-            />
             <div className="absolute inset-0 bg-gradient-to-t from-deep-green/80 via-deep-green/20 to-transparent" />
           </div>
           <div className="relative -mt-14 px-8 md:px-12 pb-10 z-10">
@@ -253,7 +262,7 @@ function SignatureStage({ categoryProjects }) {
               {featured.title}
             </h3>
             <p className="text-[14px] text-quartz/40 font-light max-w-sm mb-6">{featured.microLine}</p>
-            <StudioCTA to="/contact" variant="dark">Start a signature project</StudioCTA>
+            <StudioCTA to="/contact" variant="dark">{t('work.startSignature')}</StudioCTA>
           </div>
         </motion.div>
       )}
@@ -305,8 +314,81 @@ function SignatureStage({ categoryProjects }) {
   );
 }
 
+function ShowroomInner({ drop, openPreview, t }) {
+  const copy = useProjectText(drop);
+  const thumbs = ['plumber-template-01', 'dreams', 'volta-mare-energy'].map(getProject).filter(Boolean);
+
+  return (
+    <div className="space-y-5">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
+        <motion.button
+          type="button"
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          onClick={() => openPreview(drop)}
+          className="lg:col-span-7 text-left group relative bg-sand/60 border border-olive/8 rounded-sm overflow-hidden cursor-pointer"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-12 min-h-[280px]">
+            <div className="md:col-span-7 relative min-h-[200px]">
+              <ProjectVisualFrame project={drop} className="w-full h-full" />
+            </div>
+            <div className="md:col-span-5 p-8 flex flex-col justify-center">
+              <span className="text-[9px] tracking-[0.25em] text-olive/40 mb-3">{drop.number}</span>
+              <h3 className="font-serif text-[28px] md:text-[36px] font-light text-ink mb-2">{drop.title}</h3>
+              <p className="text-[13px] text-ink/45 font-light leading-relaxed">{copy.microLine}</p>
+              <span className="mt-6 text-[10px] uppercase tracking-[0.15em] text-olive/55">{t('work.viewVisual')} →</span>
+            </div>
+          </div>
+        </motion.button>
+        <div className="lg:col-span-5 flex flex-col gap-3">
+          {thumbs.map((p, i) => (
+            <ShowroomThumb key={p.slug} project={p} delay={0.08 * i} />
+          ))}
+        </div>
+      </div>
+      <p className="text-[13px] text-ink/38 font-light max-w-2xl leading-relaxed">{t('work.showroomIntro')}</p>
+    </div>
+  );
+}
+
+function ShowroomThumb({ project, delay }) {
+  const { openPreview } = usePreview();
+  const copy = useProjectText(project);
+  const { t } = useI18n();
+  return (
+    <motion.button
+      type="button"
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      onClick={() => openPreview(project)}
+      className="group flex gap-4 p-4 text-left bg-quartz/80 border border-olive/8 rounded-sm hover:bg-sand/40 transition-colors"
+    >
+      <div className="relative w-[108px] h-[70px] flex-shrink-0 overflow-hidden rounded-sm">
+        <ProjectVisualFrame project={project} className="w-full h-full" />
+      </div>
+      <div className="min-w-0 flex flex-col justify-center">
+        <span className="text-[9px] tracking-[0.2em] text-olive/35 mb-0.5">{project.number}</span>
+        <h4 className="font-serif text-[16px] font-light text-ink">{project.title}</h4>
+        <p className="text-[11px] text-ink/38 font-light line-clamp-2 mt-0.5">{copy.microLine}</p>
+        <span className="mt-1.5 text-[9px] uppercase tracking-[0.12em] text-olive/45">{t('work.viewVisual')} →</span>
+      </div>
+    </motion.button>
+  );
+}
+
+function ShowroomStage() {
+  const { openPreview } = usePreview();
+  const { t } = useI18n();
+  const drop = getProject('dropdrop');
+  if (!drop) return null;
+  return <ShowroomInner drop={drop} openPreview={openPreview} t={t} />;
+}
+
 export default function ProjectStage({ categorySlug }) {
-  const categoryProjects = projects.filter(p => p.categorySlug === categorySlug);
+  const categoryProjects =
+    categorySlug === SHOWROOM_SLUG ? [] : projects.filter((p) => p.categorySlug === categorySlug);
 
   return (
     <AnimatePresence mode="wait">
@@ -317,6 +399,7 @@ export default function ProjectStage({ categorySlug }) {
         exit={{ opacity: 0, y: -8 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       >
+        {categorySlug === SHOWROOM_SLUG && <ShowroomStage />}
         {categorySlug === 'local-business' && <LocalStage categoryProjects={categoryProjects} />}
         {categorySlug === 'product-brand' && <BrandStage categoryProjects={categoryProjects} />}
         {categorySlug === 'saas-web-app' && <SaasStage categoryProjects={categoryProjects} />}

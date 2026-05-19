@@ -1,12 +1,18 @@
 export default {
   nav: { work: 'Projets', process: 'Méthode', contact: 'Contact', studio: 'Nathan / NA Studio' },
+  heroCategory: {
+    'local-business': 'ENTREPRISES LOCALES',
+    'product-brand': 'PRODUIT & MARQUE',
+    'saas-web-app': 'SAAS / APP',
+    'signature-concept': 'CONCEPT SIGNATURE',
+  },
   hero: {
     eyebrow: 'NA Websites / Showroom digital',
     title1: 'Des sites avec',
     title2: 'structure.',
     title3: 'Des interfaces avec',
     title4: 'atmosphère.',
-    body: 'Sites locaux, marques, interfaces SaaS et concepts signature — des mondes distincts, pas des modèles recyclés.',
+    body: 'Sites locaux, sites produit, applications web et concepts signature — des expériences distinctes, pas des modèles recyclés.',
     ctaPrimary: 'Explorer les projets',
     ctaSecondary: 'Démarrer un projet',
     scroll: 'Défiler',
@@ -17,7 +23,7 @@ export default {
     heading2: 'Un même cadre studio.',
     sub: 'La structure reste précise. L\'atmosphère s\'adapte.',
     local: {
-      title: 'Entreprises locales',
+      title: 'Sites locaux',
       headline: 'Des niches ordinaires, élevées en présences digitales crédibles.',
       line: 'Confiance, offre claire, rapidité, contact.',
       meta: 'CONFIANCE / SERVICE / CONTACT',
@@ -30,7 +36,7 @@ export default {
     },
     saas: {
       title: 'SaaS & applications web',
-      headline: 'Des interfaces pensées autour de l\'usage, pas de la décoration.',
+      headline: 'Des interfaces pensées autour de l\'usage, du flux et de la structure.',
       line: 'Flux, hiérarchie, logique produit.',
       meta: 'FLUX / INTERFACE / LOGIQUE',
     },
@@ -98,6 +104,10 @@ export default {
     label: 'Projets',
     title: 'Travail digital sélectionné',
     sub: 'Sites locaux, identités de marque, interfaces SaaS et concepts web signature.',
+    showroom: 'Showroom',
+    showroomMeta: 'INDEX / COLLECTION COMPLÈTE',
+    showroomIntro:
+      'Dix-huit études visuelles sur quatre territoires — chacune avec son atmosphère, aucune empruntée à une étagère de modèles.',
     index: 'Index',
     ctaTitle: 'Besoin d\'une présence web plus affirmée ?',
     cta: 'Démarrer un projet',
@@ -256,20 +266,34 @@ export default {
   },
   aria: { language: 'Langue' },
   notFound: { title: 'Cette page n\'existe pas.', back: 'Retour à l\'accueil' },
-  preview: { close: 'Fermer', visualOnly: 'Aperçu visuel — lien live bientôt disponible.' },
+  preview: {
+    close: 'Fermer',
+    visualOnly: 'Aperçu visuel',
+    footerNote: 'Aperçu visuel studio — structure et atmosphère prêtes pour un lien vérifié à la publication.',
+  },
   cta: {
     exploreWork: 'Explorer les projets',
-    startProject: 'Démarrer un projet',
+    startProject: 'Lancer un projet',
     viewVisual: 'Voir le visuel',
     viewPreview: 'Voir l\'aperçu',
+    visitSite: 'Voir le site',
+    viewGithub: 'Voir GitHub',
+    viewPdf: 'Voir le PDF',
     seeProcess: 'Voir la méthode',
     sendBrief: 'Envoyer le brief',
   },
   categories: {
-    'local-business': 'Entreprises locales',
+    'local-business': 'Sites locaux',
     'product-brand': 'Sites produit & marque',
     'saas-web-app': 'SaaS & applications web',
     'signature-concept': 'Concepts signature',
+    showroom: 'Showroom',
+  },
+  categoriesMeta: {
+    'local-business': 'CONFIANCE / SERVICE / CONTACT',
+    'product-brand': 'PRODUIT / DÉSIR / POSITIONNEMENT',
+    'saas-web-app': 'FLUX / INTERFACE / LOGIQUE',
+    'signature-concept': 'ATMOSPHÈRE / IDENTITÉ / MÉMOIRE',
   },
   projects: {
     drfuel: {
@@ -335,6 +359,20 @@ export default {
     peerless: {
       shortPitch: 'Une application de tier lists visuelles pour classer idées, personnages ou produits rapidement.',
       microLine: 'Tier lists visuelles — classer vite, clairement, avec légèreté.',
+    },
+    'patch-your-path': {
+      shortPitch:
+        'Concept d\'application structurée pour cartographier les choix, suivre la progression personnelle et transformer des intentions éparses en prochaines étapes plus claires.',
+      microLine: 'Cartographier, suivre, clarifier les prochaines étapes.',
+      type: 'Application d\'auto-progression guidée',
+      tags: ['Progression personnelle', 'Planification', 'App', 'Parcours'],
+    },
+    'side-a-sound': {
+      shortPitch:
+        'Concept d\'application web orientée musique et audio — humeur, découverte et navigation plus visuelle du son.',
+      microLine: 'Découverte audio par humeur — navigation visuelle du son.',
+      type: 'Application d\'expérience audio',
+      tags: ['Audio', 'Musique', 'Découverte', 'Interface'],
     },
   },
 };

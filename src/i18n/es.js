@@ -1,12 +1,18 @@
 export default {
   nav: { work: 'Proyectos', process: 'Proceso', contact: 'Contacto', studio: 'Nathan / NA Studio' },
+  heroCategory: {
+    'local-business': 'NEGOCIO LOCAL',
+    'product-brand': 'PRODUCTO Y MARCA',
+    'saas-web-app': 'SAAS / APP',
+    'signature-concept': 'CONCEPTO SIGNATURE',
+  },
   hero: {
     eyebrow: 'NA Websites / Showroom digital',
     title1: 'Sitios con',
     title2: 'estructura.',
     title3: 'Interfaces con',
     title4: 'atmósfera.',
-    body: 'Sitios locales, marcas, interfaces SaaS y conceptos signature — mundos distintos, no plantillas recicladas.',
+    body: 'Sitios locales, sitios de producto, aplicaciones web y conceptos de autor — experiencias distintas, no plantillas recicladas.',
     ctaPrimary: 'Explorar el trabajo',
     ctaSecondary: 'Iniciar un proyecto',
     scroll: 'Desplazar',
@@ -17,7 +23,7 @@ export default {
     heading2: 'Un mismo marco de estudio.',
     sub: 'La estructura se mantiene precisa. La atmósfera se adapta.',
     local: {
-      title: 'Negocios locales',
+      title: 'Sitios locales',
       headline: 'Nichos cotidianos elevados a presencias digitales creíbles.',
       line: 'Confianza, oferta clara, rapidez, contacto.',
       meta: 'CONFIANZA / SERVICIO / CONTACTO',
@@ -30,12 +36,12 @@ export default {
     },
     saas: {
       title: 'SaaS y aplicaciones web',
-      headline: 'Interfaces construidas alrededor del uso, no de la decoración.',
+      headline: 'Interfaces construidas alrededor del uso, el flujo y la estructura.',
       line: 'Flujo, jerarquía, lógica de producto.',
       meta: 'FLUJO / INTERFAZ / LÓGICA',
     },
     signature: {
-      title: 'Conceptos signature',
+      title: 'Conceptos de autor',
       headline: 'Más cinematográficos, más específicos, más memorables.',
       line: 'Atmósfera, identidad, narrativa.',
       meta: 'ATMÓSFERA / IDENTIDAD / MEMORIA',
@@ -98,6 +104,10 @@ export default {
     label: 'Proyectos',
     title: 'Trabajo digital seleccionado',
     sub: 'Sitios locales, identidades de marca, interfaces SaaS y conceptos web signature.',
+    showroom: 'Showroom',
+    showroomMeta: 'ÍNDICE / COLECCIÓN COMPLETA',
+    showroomIntro:
+      'Dieciocho estudios visuales en cuatro territorios — cada uno con su atmósfera, ninguno tomado de una estantería de plantillas.',
     index: 'Índice',
     ctaTitle: '¿Necesitas una presencia web con más carácter?',
     cta: 'Iniciar un proyecto',
@@ -256,20 +266,34 @@ export default {
   },
   aria: { language: 'Idioma' },
   notFound: { title: 'Esta página no existe.', back: 'Volver al inicio' },
-  preview: { close: 'Cerrar', visualOnly: 'Vista previa visual — enlace en vivo próximamente.' },
+  preview: {
+    close: 'Cerrar',
+    visualOnly: 'Vista previa visual',
+    footerNote: 'Vista previa del estudio — estructura y atmósfera listas para un enlace verificado al publicar.',
+  },
   cta: {
-    exploreWork: 'Explorar el trabajo',
-    startProject: 'Iniciar un proyecto',
+    exploreWork: 'Explorar proyectos',
+    startProject: 'Empezar un proyecto',
     viewVisual: 'Ver visual',
     viewPreview: 'Ver vista previa',
-    seeProcess: 'Ver el proceso',
+    visitSite: 'Ver sitio',
+    viewGithub: 'Ver GitHub',
+    viewPdf: 'Ver PDF',
+    seeProcess: 'Ver el método',
     sendBrief: 'Enviar el brief',
   },
   categories: {
-    'local-business': 'Negocios locales',
+    'local-business': 'Sitios locales',
     'product-brand': 'Sitios de producto y marca',
     'saas-web-app': 'SaaS y aplicaciones web',
-    'signature-concept': 'Conceptos signature',
+    'signature-concept': 'Conceptos de autor',
+    showroom: 'Showroom',
+  },
+  categoriesMeta: {
+    'local-business': 'CONFIANZA / SERVICIO / CONTACTO',
+    'product-brand': 'PRODUCTO / DESEO / POSICIONAMIENTO',
+    'saas-web-app': 'FLUJO / INTERFAZ / LÓGICA',
+    'signature-concept': 'ATMÓSFERA / IDENTIDAD / MEMORIA',
   },
   projects: {
     drfuel: {
@@ -335,6 +359,20 @@ export default {
     peerless: {
       shortPitch: 'Una app de tier lists visuales para clasificar ideas, personajes o productos con rapidez.',
       microLine: 'Tier lists visuales — clasificar rápido, claro, con ligereza.',
+    },
+    'patch-your-path': {
+      shortPitch:
+        'Concepto de app estructurada para mapear decisiones, seguir el progreso personal y convertir intenciones dispersas en próximos pasos más claros.',
+      microLine: 'Mapear decisiones, seguir el progreso, clarificar pasos.',
+      type: 'App de auto-progreso guiada',
+      tags: ['Autoprogreso', 'Planificación', 'App', 'Ruta'],
+    },
+    'side-a-sound': {
+      shortPitch:
+        'Concepto de app web orientada a música y audio — estado de ánimo, descubrimiento y una forma más visual de navegar el sonido.',
+      microLine: 'Descubrimiento audio por estado de ánimo — navegación visual del sonido.',
+      type: 'App de experiencia de audio',
+      tags: ['Audio', 'Música', 'Descubrimiento', 'Interfaz'],
     },
   },
 };

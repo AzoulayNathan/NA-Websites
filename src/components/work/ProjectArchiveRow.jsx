@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { usePreview } from '@/lib/PreviewContext';
+import { useProjectText } from '@/i18n';
 
 const accentMap = {
   local: '#3F5A4F',
+  brand: '#B5523B',
   saas: '#AFC8D1',
   signature: '#AFC8D1',
-  drfuel: '#B5523B',
-  reach: '#AFC8D1',
 };
 
 export default function ProjectArchiveRow({ project, index }) {
   const { openPreview } = usePreview();
+  const copy = useProjectText(project);
   const [hovered, setHovered] = useState(false);
   const isDark = project.theme === 'signature';
 
@@ -63,7 +64,7 @@ export default function ProjectArchiveRow({ project, index }) {
         {/* Type — hidden mobile */}
         <div className="hidden md:block md:col-span-2">
           <span className={`text-[11px] font-light ${isDark ? 'text-quartz/28' : 'text-ink/28'}`}>
-            {project.type}
+            {copy.type}
           </span>
         </div>
 
@@ -72,7 +73,7 @@ export default function ProjectArchiveRow({ project, index }) {
           <p className={`text-[12px] md:text-[13px] font-light line-clamp-1 transition-colors ${
             isDark ? 'text-quartz/32' : 'text-ink/32'
           }`}>
-            {project.microLine}
+            {copy.microLine}
           </p>
         </div>
 

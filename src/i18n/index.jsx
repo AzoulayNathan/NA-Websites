@@ -81,10 +81,14 @@ export function useI18n() {
 export function useProjectText(project) {
   const { projectCopy, t } = useI18n();
   const copy = projectCopy(project.translationKey || project.slug);
+  const tags = Array.isArray(copy.tags) && copy.tags.length ? copy.tags : project.tags;
+  const type = copy.type || project.type;
   return {
     shortPitch: copy.shortPitch || project.shortPitch,
     microLine: copy.microLine || project.microLine,
     category: t(`categories.${project.categorySlug}`, project.category),
     ctaLabel: t('cta.viewVisual'),
+    tags,
+    type,
   };
 }

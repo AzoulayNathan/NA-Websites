@@ -1,0 +1,64 @@
+{
+  "generatedAt": "2026-05-19T08:22:35.762Z",
+  "projects": {
+    "drfuel": {
+      "captureStatus": "skipped_no_url"
+    },
+    "dreams": {
+      "captureStatus": "skipped_no_url"
+    },
+    "dropdrop": {
+      "captureStatus": "skipped_no_url"
+    },
+    "plumber-template-01": {
+      "captureStatus": "skipped_no_url"
+    },
+    "plumber-template-02": {
+      "captureStatus": "skipped_no_url"
+    },
+    "plumber-template-03": {
+      "captureStatus": "skipped_no_url"
+    },
+    "volta-mare-energy": {
+      "captureStatus": "skipped_no_url"
+    },
+    "arborum-materials": {
+      "captureStatus": "skipped_no_url"
+    },
+    "lumenvault-archives": {
+      "captureStatus": "skipped_no_url"
+    },
+    "atelier-nova-habitat": {
+      "captureStatus": "skipped_no_url"
+    },
+    "maison-oria-vet-care": {
+      "captureStatus": "skipped_no_url"
+    },
+    "maison-loria": {
+      "captureStatus": "skipped_no_url"
+    },
+    "na-studio-portfolio": {
+      "captureStatus": "captured",
+      "assets": [
+        "cover.png",
+        "desktop.png",
+        "mobile.png"
+      ]
+    },
+    "questline": {
+      "captureStatus": "skipped_no_url"
+    },
+    "dilemma-royale": {
+      "captureStatus": "skipped_no_url"
+    },
+    "peerless": {
+      "captureStatus": "skipped_no_url"
+    },
+    "patch-your-path": {
+      "captureStatus": "skipped_no_url"
+    },
+    "side-a-sound": {
+      "captureStatus": "skipped_no_url"
+    }
+  }
+}

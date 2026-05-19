@@ -1,0 +1,48 @@
+{
+  "portfolioRoot": "C:/Users/azoul/OneDrive/Bureau/NAweb",
+  "projectsRoot": "",
+  "githubOwner": "AzoulayNathan",
+  "defaultRepoVisibility": "public",
+  "optionalLiveUrls": {
+    "na-studio-portfolio": "https://na-studio.pages.dev/"
+  },
+  "githubHints": {
+    "na-studio-portfolio": "https://github.com/AzoulayNathan/NA-Portfolio",
+    "patch-your-path": "https://github.com/AzoulayNathan/PatchYourPath_SignalApp",
+    "side-a-sound": "https://github.com/AzoulayNathan/SideASound_VoiceSetup",
+    "questline": "https://github.com/AzoulayNathan/Questline_GamifiedDiscipline",
+    "dilemma-royale": "https://github.com/AzoulayNathan/DilemmaRoyale_Mobile",
+    "peerless": "https://github.com/AzoulayNathan/Peerless_TierList"
+  },
+  "zipSources": {
+    "patch-your-path": "C:/Users/azoul/Downloads/patch-your-path.zip",
+    "dreams": "C:/Users/azoul/Downloads/mon-reve-calme.zip",
+    "side-a-sound": "C:/Users/azoul/Downloads/side-a-sound.zip",
+    "maison-oria-vet-care": "C:/Users/azoul/Downloads/oria-pet-care.zip",
+    "maison-loria": "C:/Users/azoul/Downloads/maison-loria-table.zip",
+    "lumenvault-archives": "C:/Users/azoul/Downloads/smooth-lumen-vault-core.zip",
+    "arborum-materials": "C:/Users/azoul/Downloads/arborum-surface-lab.zip",
+    "volta-mare-energy": "C:/Users/azoul/Downloads/volta-mare-flow.zip",
+    "dropdrop": "C:/Users/azoul/Downloads/keep-dry-drop (3).zip"
+  },
+  "repoAliases": {
+    "drfuel": ["na-websites-drfuel", "drfuel", "dr-fuel", "DRFuel"],
+    "dreams": ["na-websites-dreams", "dreams", "mon-reve-calme", "Dream", "R-ve"],
+    "dropdrop": ["na-websites-dropdrop", "dropdrop", "keep-dry-drop"],
+    "plumber-template-01": ["na-websites-plumber-template-01", "plumber-template-01", "plomberie-template-01", "plumber-demo-01"],
+    "plumber-template-02": ["na-websites-plumber-template-02", "plumber-template-02", "plomberie-template-02", "plumber-demo-02"],
+    "plumber-template-03": ["na-websites-plumber-template-03", "plumber-template-03", "plomberie-template-03", "plumber-demo-03"],
+    "volta-mare-energy": ["na-websites-volta-mare-energy", "volta-mare-energy", "voltamare", "volta-mare-flow", "volta-mare"],
+    "arborum-materials": ["na-websites-arborum-materials", "arborum-materials", "arborum-surface-lab", "arborum"],
+    "lumenvault-archives": ["na-websites-lumenvault-archives", "lumenvault-archives", "lumen-vault", "lumenvault", "smooth-lumen-vault-core"],
+    "atelier-nova-habitat": ["na-websites-atelier-nova-habitat", "atelier-nova-habitat", "nova-habitat"],
+    "maison-oria-vet-care": ["na-websites-maison-oria-vet-care", "maison-oria-vet-care", "oria-pet-care", "oria-vet", "vet-care"],
+    "maison-loria": ["na-websites-maison-loria", "maison-loria", "maison-loria-table", "loria-bakery", "maison-loria-cafe"],
+    "na-studio-portfolio": ["na-studio", "na-studio-portfolio", "NA-Portfolio", "portfolio", "nathan-azoulay-portfolio"],
+    "questline": ["questline", "na-websites-questline", "Questline_GamifiedDiscipline"],
+    "dilemma-royale": ["dilemma-royale", "dilemna-royale", "prisoners-dilemma", "dilemma", "DilemmaRoyale_Mobile"],
+    "peerless": ["peerless", "na-websites-peerless", "Peerless_TierList"],
+    "patch-your-path": ["patch-your-path", "patchyourpath", "na-websites-patch-your-path", "PatchYourPath_SignalApp"],
+    "side-a-sound": ["side-a-sound", "sideasound", "side-sound", "na-websites-side-a-sound", "SideASound_VoiceSetup"]
+  }
+}

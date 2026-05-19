@@ -1,0 +1,21 @@
+<svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="500" fill="#1A2630"/>
+  <defs>
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1A2630" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#1A2630" stop-opacity="0.4"/>
+    </linearGradient>
+  </defs>
+  <path d="M40 420 Q120 360 200 420 T360 400 T520 380" stroke="#AFC8D1" stroke-width="0.8" fill="none" opacity="0.4"/><path d="M40 440 Q140 380 220 440 T400 410" stroke="#E8DFC9" stroke-width="0.6" fill="none" opacity="0.3"/><rect x="600" y="120" width="8" height="40" fill="#AFC8D1" opacity="0.25" rx="1"/><rect x="620" y="100" width="8" height="60" fill="#AFC8D1" opacity="0.35" rx="1"/><rect x="640" y="130" width="8" height="30" fill="#AFC8D1" opacity="0.2" rx="1"/>
+  <line x1="400" y1="0" x2="400" y2="500" stroke="#AFC8D1" stroke-width="0.5" opacity="0.1"/>
+  <rect x="48" y="64" width="480" height="340" fill="rgba(246,243,237,0.07)" rx="2"/>
+  <rect x="72" y="88" width="64" height="5" fill="#F6F3ED" opacity="0.5" rx="1"/>
+  <rect x="72" y="128" width="280" height="18" fill="#F6F3ED" opacity="0.65" rx="1"/>
+  <rect x="72" y="156" width="200" height="8" fill="#F6F3ED" opacity="0.22" rx="1"/>
+  <rect x="72" y="188" width="112" height="32" fill="#AFC8D1" opacity="0.8" rx="2"/>
+  <rect x="72" y="240" width="320" height="6" fill="#F6F3ED" opacity="0.12" rx="1"/>
+  <rect x="72" y="256" width="260" height="6" fill="#F6F3ED" opacity="0.08" rx="1"/>
+  <rect x="0" y="400" width="800" height="100" fill="url(#fade)"/>
+  <text x="72" y="448" font-family="Georgia, 'Times New Roman', serif" font-size="26" fill="#F6F3ED" opacity="0.92">Side a Sound</text>
+  <text x="72" y="472" font-family="system-ui, sans-serif" font-size="9" letter-spacing="3.5" fill="rgba(246,243,237,0.4)">SAAS & WEB APP</text>
+</svg>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { getProject } from '@/lib/projects';
+import { getProject, enrichProject } from '@/lib/projects';
 import { useI18n, useProjectText } from '@/i18n';
 import { useScrollReveal } from '@/lib/useScrollReveal';
 import { usePreview } from '@/lib/PreviewContext';
@@ -8,16 +8,8 @@ import RevealText from '../shared/RevealText';
 import ProjectVisualFrame from '../shared/ProjectVisualFrame';
 import StudioCTA from '../shared/StudioCTA';
 
-const FEATURED_SLUGS = [
-  'dropdrop',
-  'plumber-template-01',
-  'volta-mare-energy',
-  'dreams',
-  'questline',
-];
-
 function FeatureBlock({ slug, layout = 'default' }) {
-  const project = getProject(slug);
+  const project = enrichProject(getProject(slug));
   const stub = { slug, translationKey: slug, categorySlug: 'local-business', category: '', shortPitch: '', microLine: '' };
   const copy = useProjectText(project || stub);
   const { openPreview } = usePreview();
@@ -85,7 +77,7 @@ export default function FeaturedWorkSection() {
             <FeatureBlock slug="volta-mare-energy" />
             <FeatureBlock slug="dreams" />
           </motion.div>
-          <FeatureBlock slug="questline" />
+          <FeatureBlock slug="patch-your-path" />
         </motion.div>
 
         <motion.div className="mt-12 flex justify-end">

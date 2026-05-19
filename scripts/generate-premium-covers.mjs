@@ -22,15 +22,17 @@ const specs = {
   questline: { bg: '#F6F3ED', accent: '#3F5A4F', accent2: '#B5523B', label: 'SaaS & Web App', mood: 'gamified' },
   'dilemma-royale': { bg: '#1A1A18', accent: '#AFC8D1', accent2: '#B5523B', label: 'SaaS & Web App', mood: 'strategy' },
   peerless: { bg: '#F0EDE6', accent: '#1F3D33', accent2: '#AFC8D1', label: 'SaaS & Web App', mood: 'ranking' },
+  'patch-your-path': { bg: '#F4F2EC', accent: '#3F5A4F', accent2: '#B5523B', label: 'SaaS & Web App', mood: 'path' },
+  'side-a-sound': { bg: '#1A2630', accent: '#AFC8D1', accent2: '#E8DFC9', label: 'SaaS & Web App', mood: 'audio' },
 };
 
 const titles = {
   drfuel: 'DRFuel',
   dreams: 'Dreams',
   dropdrop: 'DROPDROP',
-  'plumber-template-01': 'Emergency Plumbing',
-  'plumber-template-02': 'Artisan Plumbing',
-  'plumber-template-03': 'Modern Trade',
+  'plumber-template-01': 'Plumber Template 01',
+  'plumber-template-02': 'Plumber Template 02',
+  'plumber-template-03': 'Plumber Template 03',
   'volta-mare-energy': 'Volta Mare Energy',
   'arborum-materials': 'Arborum Materials',
   'lumenvault-archives': 'LumenVault Archives',
@@ -41,6 +43,8 @@ const titles = {
   questline: 'Questline',
   'dilemma-royale': 'Dilemma Royale',
   peerless: 'Peerless',
+  'patch-your-path': 'Patch Your Path',
+  'side-a-sound': 'Side a Sound',
 };
 
 function moodArt(mood, s) {
@@ -79,6 +83,10 @@ function moodArt(mood, s) {
       return `<circle cx="620" cy="200" r="70" fill="none" stroke="${a}" stroke-width="0.8" opacity="0.35"/><circle cx="700" cy="160" r="40" fill="none" stroke="${b}" stroke-width="0.6" opacity="0.3"/><line x1="660" y1="180" x2="680" y2="150" stroke="${a}" stroke-width="0.5" opacity="0.4"/>`;
     case 'ranking':
       return `<rect x="560" y="100" width="200" height="36" fill="${a}" opacity="0.15" rx="2"/><rect x="560" y="150" width="160" height="36" fill="${a}" opacity="0.25" rx="2"/><rect x="560" y="200" width="120" height="36" fill="${a}" opacity="0.35" rx="2"/>`;
+    case 'path':
+      return `<path d="M80 380 Q200 320 320 360 T560 340" stroke="${a}" stroke-width="1.2" fill="none" opacity="0.35"/><circle cx="200" cy="340" r="6" fill="${b}" opacity="0.5"/><circle cx="380" cy="350" r="6" fill="${a}" opacity="0.45"/><circle cx="500" cy="330" r="6" fill="${b}" opacity="0.4"/>`;
+    case 'audio':
+      return `<path d="M40 420 Q120 360 200 420 T360 400 T520 380" stroke="${a}" stroke-width="0.8" fill="none" opacity="0.4"/><path d="M40 440 Q140 380 220 440 T400 410" stroke="${b}" stroke-width="0.6" fill="none" opacity="0.3"/><rect x="600" y="120" width="8" height="40" fill="${a}" opacity="0.25" rx="1"/><rect x="620" y="100" width="8" height="60" fill="${a}" opacity="0.35" rx="1"/><rect x="640" y="130" width="8" height="30" fill="${a}" opacity="0.2" rx="1"/>`;
     default:
       return '';
   }
@@ -86,7 +94,7 @@ function moodArt(mood, s) {
 
 function coverSvg(slug, spec) {
   const title = titles[slug];
-  const dark = ['#1C3028', '#0F1A22', '#1F3D33', '#141820', '#1A1A18', '#2C2419'].includes(spec.bg);
+  const dark = ['#1C3028', '#0F1A22', '#1F3D33', '#141820', '#1A1A18', '#2C2419', '#1A2630'].includes(spec.bg);
   const text = dark ? '#F6F3ED' : '#1A1A18';
   const muted = dark ? 'rgba(246,243,237,0.4)' : 'rgba(26,26,24,0.4)';
   const panel = dark ? 'rgba(246,243,237,0.07)' : 'rgba(31,61,51,0.05)';
@@ -121,7 +129,7 @@ function desktopSvg(slug, spec) {
 
 function mobileSvg(slug, spec) {
   const title = titles[slug];
-  const dark = ['#1C3028', '#0F1A22', '#1F3D33', '#141820', '#1A1A18', '#2C2419'].includes(spec.bg);
+  const dark = ['#1C3028', '#0F1A22', '#1F3D33', '#141820', '#1A1A18', '#2C2419', '#1A2630'].includes(spec.bg);
   const text = dark ? '#F6F3ED' : '#1A1A18';
   return `<svg width="390" height="844" viewBox="0 0 390 844" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect width="390" height="844" fill="${spec.bg}"/>

@@ -34,9 +34,9 @@ function project({
     coverVideo: null,
     proofType: 'visual',
     proofUrl: null,
-    ctaLabel: 'View visual',
+    ctaLabel: 'viewVisual',
     assetStatus: 'placeholder',
-    status: 'active',
+    status: 'visual-ready',
   };
 }
 
@@ -119,7 +119,7 @@ export const projects = [
     theme: 'local',
     type: 'Local service website',
     shortPitch:
-      'A more modern local trade website concept designed to make a practical service feel clean, serious and easy to contact.',
+      'A modern local trade website concept designed to make a practical service feel clean, serious and easy to contact.',
     microLine: 'Modern local trade — clean, serious, easy to contact.',
     tags: ['Local Business', 'Trade', 'Service', 'Contact'],
     featured: false,
@@ -265,6 +265,44 @@ export const projects = [
     featured: false,
     number: '16',
   }),
+  project({
+    slug: 'patch-your-path',
+    title: 'Patch Your Path',
+    category: 'SaaS & Web Apps',
+    categorySlug: 'saas-web-app',
+    theme: 'saas',
+    type: 'Guided self-progress app',
+    shortPitch:
+      'A structured web app concept for mapping choices, tracking personal progress and turning scattered intentions into clearer next steps.',
+    microLine: 'Map choices, track progress, clarify next steps.',
+    tags: ['Self-progress', 'Planning', 'App', 'Path'],
+    featured: false,
+    number: '17',
+  }),
+  project({
+    slug: 'side-a-sound',
+    title: 'Side a Sound',
+    category: 'SaaS & Web Apps',
+    categorySlug: 'saas-web-app',
+    theme: 'saas',
+    type: 'Audio experience app',
+    shortPitch:
+      'A music and audio-oriented web app concept built around mood, discovery and a more visual way to navigate sound.',
+    microLine: 'Mood-led audio discovery — visual navigation for sound.',
+    tags: ['Audio', 'Music', 'Discovery', 'Interface'],
+    featured: false,
+    number: '18',
+  }),
+];
+
+export const SHOWROOM_SLUG = 'showroom';
+
+export const workFilterOptions = [
+  { slug: SHOWROOM_SLUG, theme: 'local', metaKey: 'work.showroomMeta' },
+  { slug: 'local-business', theme: 'local', metaKey: 'categoriesMeta.local-business' },
+  { slug: 'product-brand', theme: 'brand', metaKey: 'categoriesMeta.product-brand' },
+  { slug: 'saas-web-app', theme: 'saas', metaKey: 'categoriesMeta.saas-web-app' },
+  { slug: 'signature-concept', theme: 'signature', metaKey: 'categoriesMeta.signature-concept' },
 ];
 
 export const themes = {
@@ -344,10 +382,18 @@ export const categories = [
 
 export const categoryLabels = {
   'local-business': 'LOCAL BUSINESS',
-  'product-brand': 'BRAND WEBSITE',
+  'product-brand': 'PRODUCT & BRAND',
   'saas-web-app': 'SAAS / APP',
   'signature-concept': 'SIGNATURE CONCEPT',
 };
+
+export const HOME_FEATURED_SLUGS = [
+  'dropdrop',
+  'plumber-template-01',
+  'volta-mare-energy',
+  'dreams',
+  'patch-your-path',
+];
 
 export function getProject(slug) {
   return projects.find((p) => p.slug === slug);
@@ -356,3 +402,5 @@ export function getProject(slug) {
 export function getFeaturedProjects() {
   return projects.filter((p) => p.featured);
 }
+
+export { enrichProject, enrichProjects, getEnrichedProject } from './enrichProjects';

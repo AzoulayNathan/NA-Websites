@@ -1,6 +1,15 @@
 # Legacy Base44 config (removed from app)
 base44/
 
+# V5 intake workspace (extracted zips, clones)
+.v5-work/
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
 #env
 .env
 .env.*

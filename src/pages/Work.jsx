@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { projects, categories } from '@/lib/projects';
+import { projects, SHOWROOM_SLUG, enrichProjects } from '@/lib/projects';
 import { useI18n } from '@/i18n';
 import RevealText from '../components/shared/RevealText';
 import StudioCTA from '../components/shared/StudioCTA';
@@ -9,18 +9,39 @@ import ProjectStage from '../components/work/ProjectStage';
 import ProjectArchiveRow from '../components/work/ProjectArchiveRow';
 
 const heroBg = {
+  showroom: '#F6F3ED',
   'local-business': '#F6F3ED',
   'product-brand': '#F6F3ED',
   'saas-web-app': '#F6F3ED',
   'signature-concept': '#1F3D33',
 };
 
+function sortByNumber(a, b) {
+  return parseInt(a.number, 10) - parseInt(b.number, 10);
+}
+
 export default function Work() {
   const { t } = useI18n();
-  const [activeCategory, setActiveCategory] = useState('product-brand');
+  const [activeCategory, setActiveCategory] = useState(SHOWROOM_SLUG);
 
-  const activeCat = categories.find((c) => c.slug === activeCategory);
-  const allCategoryProjects = projects.filter((p) => p.categorySlug === activeCategory);
+  const activeMeta = useMemo(() => {
+    if (activeCategory === SHOWROOM_SLUG) return t('work.showroomMeta');
+    const map = {
+      'local-business': 'categoriesMeta.local-business',
+      'product-brand': 'categoriesMeta.product-brand',
+      'saas-web-app': 'categoriesMeta.saas-web-app',
+      'signature-concept': 'categoriesMeta.signature-concept',
+    };
+    return t(map[activeCategory] || 'work.showroomMeta');
+  }, [activeCategory, t]);
+
+  const enriched = useMemo(() => enrichProjects(projects), []);
+
+  const allCategoryProjects = useMemo(() => {
+    if (activeCategory === SHOWROOM_SLUG) return [...enriched].sort(sortByNumber);
+    return enriched.filter((p) => p.categorySlug === activeCategory).sort(sortByNumber);
+  }, [activeCategory, enriched]);
+
   const isDark = activeCategory === 'signature-concept';
   const isSaas = activeCategory === 'saas-web-app';
 
@@ -50,7 +71,7 @@ export default function Work() {
             transition={{ duration: 0.4 }}
             className={`text-[10px] tracking-[0.2em] uppercase mt-6 ${isDark ? 'text-quartz/25' : isSaas ? 'text-sky-blue/50' : 'text-olive/40'}`}
           >
-            {activeCat?.meta}
+            {activeMeta}
           </motion.p>
         </AnimatePresence>
 
@@ -73,7 +94,7 @@ export default function Work() {
       <section className="max-w-[1400px] mx-auto px-6 md:px-10 pb-24">
         <div className="flex items-center gap-4 mb-6">
           <p className={`text-[10px] uppercase tracking-[0.25em] ${isDark ? 'text-quartz/25' : 'text-olive/35'}`}>
-            {activeCat ? t(`categories.${activeCat.slug}`) : ''} — {t('work.index')}
+            {activeCategory === SHOWROOM_SLUG ? t('work.showroom') : t(`categories.${activeCategory}`)} — {t('work.index')}
           </p>
           <div className={`h-px flex-1 ${isDark ? 'bg-quartz/6' : 'bg-olive/8'}`} />
         </div>

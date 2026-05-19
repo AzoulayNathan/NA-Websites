@@ -16,6 +16,6 @@
   <rect x="72" y="240" width="320" height="6" fill="#1A1A18" opacity="0.12" rx="1"/>
   <rect x="72" y="256" width="260" height="6" fill="#1A1A18" opacity="0.08" rx="1"/>
   <rect x="0" y="400" width="800" height="100" fill="url(#fade)"/>
-  <text x="72" y="448" font-family="Georgia, 'Times New Roman', serif" font-size="26" fill="#1A1A18" opacity="0.92">Emergency Plumbing</text>
+  <text x="72" y="448" font-family="Georgia, 'Times New Roman', serif" font-size="26" fill="#1A1A18" opacity="0.92">Plumber Template 01</text>
   <text x="72" y="472" font-family="system-ui, sans-serif" font-size="9" letter-spacing="3.5" fill="rgba(26,26,24,0.4)">LOCAL BUSINESS</text>
 </svg>

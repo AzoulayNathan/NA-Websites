@@ -1,0 +1,122 @@
+{
+  "generatedAt": "2026-05-19T08:22:07.234Z",
+  "githubOwner": "AzoulayNathan",
+  "authRequired": false,
+  "projects": {
+    "drfuel": {
+      "slug": "drfuel",
+      "githubUrl": null,
+      "repoStatus": "not_found",
+      "candidates": []
+    },
+    "dreams": {
+      "slug": "dreams",
+      "githubUrl": null,
+      "repoStatus": "blocked_secret_detected",
+      "candidates": [
+        {
+          "name": "R-ve",
+          "url": "https://github.com/AzoulayNathan/R-ve",
+          "score": 98,
+          "updatedAt": "2023-06-26T14:12:43Z"
+        }
+      ]
+    },
+    "dropdrop": {
+      "slug": "dropdrop",
+      "githubUrl": null,
+      "repoStatus": "not_found",
+      "candidates": []
+    },
+    "plumber-template-01": {
+      "slug": "plumber-template-01",
+      "githubUrl": null,
+      "repoStatus": "not_found",
+      "candidates": []
+    },
+    "plumber-template-02": {
+      "slug": "plumber-template-02",
+      "githubUrl": null,
+      "repoStatus": "not_found",
+      "candidates": []
+    },
+    "plumber-template-03": {
+      "slug": "plumber-template-03",
+      "githubUrl": null,
+      "repoStatus": "not_found",
+      "candidates": []
+    },
+    "volta-mare-energy": {
+      "slug": "volta-mare-energy",
+      "githubUrl": null,
+      "repoStatus": "not_found",
+      "candidates": []
+    },
+    "arborum-materials": {
+      "slug": "arborum-materials",
+      "githubUrl": null,
+      "repoStatus": "not_found",
+      "candidates": []
+    },
+    "lumenvault-archives": {
+      "slug": "lumenvault-archives",
+      "githubUrl": null,
+      "repoStatus": "not_found",
+      "candidates": []
+    },
+    "atelier-nova-habitat": {
+      "slug": "atelier-nova-habitat",
+      "githubUrl": null,
+      "repoStatus": "not_found",
+      "candidates": []
+    },
+    "maison-oria-vet-care": {
+      "slug": "maison-oria-vet-care",
+      "githubUrl": null,
+      "repoStatus": "not_found",
+      "candidates": []
+    },
+    "maison-loria": {
+      "slug": "maison-loria",
+      "githubUrl": null,
+      "repoStatus": "not_found",
+      "candidates": []
+    },
+    "na-studio-portfolio": {
+      "slug": "na-studio-portfolio",
+      "githubUrl": "https://github.com/AzoulayNathan/NA-Portfolio",
+      "repoStatus": "found_hint",
+      "candidates": []
+    },
+    "questline": {
+      "slug": "questline",
+      "githubUrl": "https://github.com/AzoulayNathan/Questline_GamifiedDiscipline",
+      "repoStatus": "found_hint",
+      "candidates": []
+    },
+    "dilemma-royale": {
+      "slug": "dilemma-royale",
+      "githubUrl": "https://github.com/AzoulayNathan/DilemmaRoyale_Mobile",
+      "repoStatus": "found_hint",
+      "candidates": []
+    },
+    "peerless": {
+      "slug": "peerless",
+      "githubUrl": "https://github.com/AzoulayNathan/Peerless_TierList",
+      "repoStatus": "found_hint",
+      "candidates": []
+    },
+    "patch-your-path": {
+      "slug": "patch-your-path",
+      "githubUrl": "https://github.com/AzoulayNathan/PatchYourPath_SignalApp",
+      "repoStatus": "found_hint",
+      "candidates": []
+    },
+    "side-a-sound": {
+      "slug": "side-a-sound",
+      "githubUrl": "https://github.com/AzoulayNathan/SideASound_VoiceSetup",
+      "repoStatus": "found_hint",
+      "candidates": []
+    }
+  }
+}

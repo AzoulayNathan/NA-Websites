@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { useI18n, useProjectText } from '@/i18n';
 import StudioCTA from './StudioCTA';
+import ProjectActionCTA from './ProjectActionCTA';
+import { getProjectCta } from '@/lib/projectCta';
 
 const EASE = [0.22, 1, 0.36, 1];
 const STUB = {
@@ -12,11 +14,14 @@ const STUB = {
   category: '',
   shortPitch: '',
   microLine: '',
+  tags: [],
 };
 
 export default function ProjectPreviewModal({ project, onClose }) {
   const { t } = useI18n();
   const copy = useProjectText(project || STUB);
+  const cta = getProjectCta(project, t);
+  const isVisualOnly = !project || cta.mode === 'preview';
 
   useEffect(() => {
     if (!project) return undefined;
@@ -41,7 +46,7 @@ export default function ProjectPreviewModal({ project, onClose }) {
           className="fixed inset-0 z-[200] flex items-end md:items-center justify-center p-0 md:p-8"
           onClick={onClose}
         >
-          <div className="absolute inset-0 bg-ink/70 backdrop-blur-sm" aria-hidden />
+          <div className="absolute inset-0 bg-ink/75 backdrop-blur-[2px]" aria-hidden />
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -69,7 +74,7 @@ export default function ProjectPreviewModal({ project, onClose }) {
               {project.coverImage ? (
                 <img
                   src={project.coverImage}
-                  alt={project.title}
+                  alt=""
                   className="w-full h-full object-cover object-top"
                 />
               ) : null}
@@ -81,6 +86,41 @@ export default function ProjectPreviewModal({ project, onClose }) {
                   project.theme === 'signature' ? 'bg-sky-blue/30' : 'bg-olive/25'
                 }`}
               />
+            </div>
+
+            {project.galleryImages?.length > 0 ? (
+              <div className="flex gap-px overflow-x-auto bg-olive/10">
+                {project.galleryImages.map((src) => (
+                  <img key={src} src={src} alt="" className="h-24 w-auto object-cover flex-shrink-0" />
+                ))}
+              </div>
+            ) : null}
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-olive/10">
+              {project.desktopScreenshot ? (
+                <div className={`relative aspect-[16/10] ${project.theme === 'signature' ? 'bg-deep-green' : 'bg-sand/30'}`}>
+                  <img src={project.desktopScreenshot} alt="" className="w-full h-full object-cover object-top" />
+                  <span
+                    className={`absolute bottom-2 left-2 text-[8px] uppercase tracking-[0.2em] ${
+                      project.theme === 'signature' ? 'text-quartz/35' : 'text-ink/35'
+                    }`}
+                  >
+                    {t('work.viewPreview')}
+                  </span>
+                </div>
+              ) : null}
+              {project.mobileScreenshot ? (
+                <div className={`relative aspect-[9/16] max-h-[280px] mx-auto md:max-h-none ${project.theme === 'signature' ? 'bg-deep-green' : 'bg-sand/30'}`}>
+                  <img src={project.mobileScreenshot} alt="" className="w-full h-full object-cover object-top" />
+                  <span
+                    className={`absolute bottom-2 left-2 text-[8px] uppercase tracking-[0.2em] ${
+                      project.theme === 'signature' ? 'text-quartz/35' : 'text-ink/35'
+                    }`}
+                  >
+                    {t('work.viewPreview')}
+                  </span>
+                </div>
+              ) : null}
             </div>
 
             <div className="p-8 md:p-10">
@@ -114,22 +154,22 @@ export default function ProjectPreviewModal({ project, onClose }) {
                 {project.title}
               </h2>
               <p
-                className={`text-[14px] font-light leading-relaxed max-w-lg mb-2 ${
+                className={`text-[14px] font-light leading-relaxed max-w-lg mb-3 ${
                   project.theme === 'signature' ? 'text-quartz/45' : 'text-ink/45'
                 }`}
               >
                 {copy.shortPitch}
               </p>
               <p
-                className={`text-[11px] uppercase tracking-[0.12em] mb-8 ${
-                  project.theme === 'signature' ? 'text-quartz/25' : 'text-ink/28'
+                className={`text-[11px] font-light leading-relaxed max-w-lg mb-8 ${
+                  project.theme === 'signature' ? 'text-quartz/22' : 'text-ink/30'
                 }`}
               >
-                {t('preview.visualOnly')}
+                {isVisualOnly ? t('preview.visualOnly') : t('preview.footerNote')}
               </p>
 
               <div className="flex flex-wrap gap-1.5 mb-8">
-                {project.tags.map((tag) => (
+                {copy.tags.map((tag) => (
                   <span
                     key={tag}
                     className={`text-[9px] uppercase tracking-[0.1em] px-2 py-1 border rounded-sm ${
@@ -143,12 +183,18 @@ export default function ProjectPreviewModal({ project, onClose }) {
                 ))}
               </div>
 
-              <StudioCTA
-                to="/contact"
-                variant={project.theme === 'signature' ? 'dark' : 'primary'}
-              >
-                {t('cta.startProject')}
-              </StudioCTA>
+              <div className="flex flex-wrap items-center gap-6">
+                <ProjectActionCTA
+                  project={project}
+                  variant={project.theme === 'signature' ? 'dark' : 'primary'}
+                />
+                <StudioCTA
+                  to="/contact"
+                  variant="secondary"
+                >
+                  {t('cta.startProject')}
+                </StudioCTA>
+              </div>
             </div>
           </motion.div>
         </motion.div>

@@ -1,68 +1,77 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { getProject, categoryLabels } from '@/lib/projects';
+import { getProject } from '@/lib/projects';
 import { useI18n } from '@/i18n';
 import StudioCTA from '../shared/StudioCTA';
 
 const EASE = [0.22, 1, 0.36, 1];
 
-const HERO_SLUGS = [
-  { slug: 'dropdrop', size: 'dominant', labelKey: 'product-brand' },
-  { slug: 'plumber-template-01', size: 'sm', labelKey: 'local-business' },
-  { slug: 'dreams', size: 'md', labelKey: 'signature-concept' },
-  { slug: 'volta-mare-energy', size: 'md', labelKey: 'product-brand' },
-  { slug: 'questline', size: 'sm', labelKey: 'saas-web-app' },
+const HERO_ITEMS = [
+  { slug: 'dropdrop', role: 'dominant', labelKey: 'product-brand' },
+  { slug: 'plumber-template-01', role: 'satellite', labelKey: 'local-business' },
+  { slug: 'dreams', role: 'satellite', labelKey: 'signature-concept' },
+  { slug: 'volta-mare-energy', role: 'satellite', labelKey: 'product-brand' },
+  { slug: 'side-a-sound', role: 'satellite', labelKey: 'saas-web-app' },
 ];
 
-function PreviewTile({ item, index }) {
+function PreviewTile({ item, index, t }) {
   const project = getProject(item.slug);
   if (!project) return null;
 
   const isDark = project.theme === 'signature';
-  const sizeClass =
-    item.size === 'dominant'
-      ? 'col-span-12 row-span-2 min-h-[220px] md:min-h-[300px]'
-      : item.size === 'md'
-        ? 'col-span-6 md:col-span-5 min-h-[120px] md:min-h-[150px]'
-        : 'col-span-6 md:col-span-4 min-h-[100px] md:min-h-[130px]';
+  const label = t(`heroCategory.${item.labelKey}`);
+
+  const layout =
+    item.role === 'dominant'
+      ? 'relative z-10 col-span-12 md:col-span-7 md:col-start-3 md:row-span-2 min-h-[200px] md:min-h-[min(52vh,340px)] md:shadow-[0_24px_48px_-12px_rgba(31,61,51,0.12)] md:-translate-y-1'
+      : index === 1
+        ? 'relative z-20 col-span-6 md:col-span-4 md:col-start-1 md:row-start-1 min-h-[120px] md:min-h-[140px] md:-translate-y-3 md:translate-x-0'
+        : index === 2
+          ? 'relative z-20 col-span-6 md:col-span-4 md:col-start-9 md:row-start-1 min-h-[120px] md:min-h-[140px] md:-translate-y-1'
+          : index === 3
+            ? 'relative z-[15] col-span-6 md:col-span-4 md:col-start-1 md:row-start-2 min-h-[120px] md:min-h-[150px] md:translate-y-2'
+            : 'relative z-[15] col-span-12 md:col-span-4 md:col-start-9 md:row-start-2 min-h-[120px] md:min-h-[150px] md:translate-y-4';
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16, scale: 0.98 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
+      initial={{ opacity: 0, y: 18 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{
-        delay: 0.85 + (item.size === 'dominant' ? 0 : 0.12 + index * 0.08),
-        duration: 0.85,
+        delay: item.role === 'dominant' ? 0.72 : 0.88 + (index - 1) * 0.1,
+        duration: 0.75,
         ease: EASE,
       }}
-      className={`relative overflow-hidden rounded-sm group ${sizeClass} ${
-        isDark ? 'border border-sky-blue/10' : 'border border-olive/10'
+      className={`group overflow-hidden rounded-sm border ${layout} ${
+        isDark ? 'border-sky-blue/12' : 'border-olive/10'
       }`}
     >
       <img
         src={project.coverImage}
-        alt={project.title}
+        alt=""
         className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
       />
       <div
         className={`absolute inset-0 ${
           isDark
-            ? 'bg-gradient-to-t from-deep-green/90 via-deep-green/30 to-transparent'
-            : 'bg-gradient-to-t from-quartz/80 via-transparent to-transparent'
+            ? 'bg-gradient-to-t from-deep-green/92 via-deep-green/35 to-transparent'
+            : 'bg-gradient-to-t from-quartz/85 via-quartz/15 to-transparent'
         }`}
       />
       <div className="absolute inset-0 pointer-events-none">
-        <div
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: item.role === 'dominant' ? 1.05 : 1.15 + index * 0.06, duration: 0.45 }}
           className={`absolute top-3 left-3 text-[8px] uppercase tracking-[0.22em] ${
             isDark ? 'text-sky-blue/55' : 'text-olive/55'
           }`}
         >
-          {categoryLabels[item.labelKey]}
-        </div>
+          {label}
+        </motion.p>
         <motion.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
-          transition={{ delay: 1.4 + index * 0.06, duration: 0.6, ease: EASE }}
+          transition={{ delay: 1.2 + index * 0.05, duration: 0.55, ease: EASE }}
           className={`absolute bottom-0 left-0 right-0 h-px origin-left ${
             isDark ? 'bg-sky-blue/25' : 'bg-olive/20'
           }`}
@@ -71,7 +80,7 @@ function PreviewTile({ item, index }) {
       <div className="absolute bottom-3 left-3 right-3">
         <p
           className={`font-serif font-light leading-tight ${
-            item.size === 'dominant' ? 'text-[22px] md:text-[28px]' : 'text-[15px] md:text-[17px]'
+            item.role === 'dominant' ? 'text-[21px] md:text-[28px]' : 'text-[15px] md:text-[17px]'
           } ${isDark ? 'text-quartz' : 'text-ink'}`}
         >
           {project.title}
@@ -93,16 +102,11 @@ export default function HeroSection() {
         }}
       />
 
-      <motion.div
-        initial={{ scaleY: 0, opacity: 0 }}
-        animate={{ scaleY: 1, opacity: 1 }}
-        transition={{ duration: 1.2, ease: EASE, delay: 0.15 }}
-        className="absolute left-[42%] top-[10%] bottom-[10%] w-px bg-olive/10 origin-top hidden lg:block"
-      />
+      <div className="absolute left-[38%] top-[12%] bottom-[12%] w-px bg-olive/8 origin-top hidden lg:block" />
 
       <div className="relative max-w-[1400px] mx-auto px-6 md:px-10 w-full pt-28 pb-16 lg:py-32">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          <div className="lg:col-span-5">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-start">
+          <div className="lg:col-span-5 lg:pr-4">
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -150,7 +154,7 @@ export default function HeroSection() {
             <motion.div
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.25, duration: 0.65 }}
+              transition={{ delay: 1.2, duration: 0.65 }}
               className="mt-10 flex flex-wrap items-center gap-8"
             >
               <StudioCTA to="/work" variant="primary">
@@ -162,19 +166,31 @@ export default function HeroSection() {
             </motion.div>
           </div>
 
-          <div className="lg:col-span-7 lg:pl-6">
+          <div className="lg:col-span-7">
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.75, duration: 0.5 }}
+              transition={{ delay: 0.7, duration: 0.5 }}
               className="text-[9px] uppercase tracking-[0.3em] text-olive/35 mb-4 hidden lg:block"
             >
               {t('hero.showroom')}
             </motion.p>
-            <div className="grid grid-cols-12 gap-2 md:gap-3 auto-rows-fr">
-              {HERO_SLUGS.map((item, i) => (
-                <PreviewTile key={item.slug} item={item} index={i} />
-              ))}
+
+            <div className="relative lg:min-h-[420px]">
+              <svg
+                className="hidden lg:block absolute inset-0 w-full h-full pointer-events-none text-olive/10"
+                viewBox="0 0 100 100"
+                preserveAspectRatio="none"
+              >
+                <line x1="22" y1="18" x2="50" y2="42" stroke="currentColor" strokeWidth="0.2" />
+                <line x1="78" y1="20" x2="52" y2="44" stroke="currentColor" strokeWidth="0.2" />
+              </svg>
+
+              <div className="grid grid-cols-12 grid-rows-[auto_auto] gap-2 md:gap-3 lg:gap-y-4 lg:gap-x-2 auto-rows-min">
+                {HERO_ITEMS.map((item, i) => (
+                  <PreviewTile key={item.slug} item={item} index={i} t={t} />
+                ))}
+              </div>
             </div>
           </div>
         </div>

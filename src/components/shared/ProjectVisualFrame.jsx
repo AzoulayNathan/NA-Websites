@@ -44,18 +44,6 @@ function DrfuelOverlay() {
   );
 }
 
-function ReachOverlay() {
-  return (
-    <svg className="absolute bottom-4 left-4 right-4 h-16 pointer-events-none" viewBox="0 0 300 64" preserveAspectRatio="none">
-      <circle cx="30" cy="32" r="4" fill="none" stroke="#AFC8D1" strokeWidth="0.8" opacity="0.4"/>
-      <circle cx="150" cy="20" r="4" fill="none" stroke="#AFC8D1" strokeWidth="0.8" opacity="0.4"/>
-      <circle cx="270" cy="38" r="4" fill="none" stroke="#AFC8D1" strokeWidth="0.8" opacity="0.4"/>
-      <line x1="34" y1="32" x2="146" y2="20" stroke="#AFC8D1" strokeWidth="0.5" opacity="0.25"/>
-      <line x1="154" y1="20" x2="266" y2="38" stroke="#AFC8D1" strokeWidth="0.5" opacity="0.25"/>
-    </svg>
-  );
-}
-
 function DreamsOverlay() {
   return (
     <>
@@ -68,29 +56,11 @@ function DreamsOverlay() {
   );
 }
 
-function OnepagerOverlay() {
-  return (
-    <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
-      <defs>
-        <pattern id="op-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1F3D33" strokeWidth="0.3"/>
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#op-grid)" opacity="0.08"/>
-      <rect x="20" y="20" width="160" height="90" rx="1" fill="none" stroke="#AFC8D1" strokeWidth="0.5" opacity="0.25"/>
-      <rect x="200" y="50" width="180" height="60" rx="1" fill="none" stroke="#AFC8D1" strokeWidth="0.4" opacity="0.15"/>
-      <text x="28" y="116" fontSize="6" fill="#AFC8D1" opacity="0.3" fontFamily="monospace" letterSpacing="1">SYSTEM / STRUCTURE</text>
-    </svg>
-  );
-}
-
 function getOverlay(project) {
   if (!project) return null;
   switch (project.slug) {
     case 'drfuel': return <DrfuelOverlay />;
     case 'dreams': return <DreamsOverlay />;
-    case 'onepager-studio': return <OnepagerOverlay />;
-    case 'reach': return <ReachOverlay />;
     default:
       if (project.theme === 'local') return <LocalOverlay />;
       if (project.theme === 'saas') return <SaasOverlay slug={project.slug} />;

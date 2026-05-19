@@ -3,11 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const SESSION_KEY = 'na-websites-opening-seen';
 const EASE = [0.22, 1, 0.36, 1];
-const TOTAL_MS = 1550;
+const TOTAL_MS = 1500;
 
 export default function OpeningSequence() {
   const [show, setShow] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [gapPx, setGapPx] = useState(40);
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -17,6 +18,9 @@ export default function OpeningSequence() {
     }
     if (sessionStorage.getItem(SESSION_KEY)) return undefined;
 
+    const narrow = window.matchMedia('(max-width: 640px)').matches;
+    setGapPx(narrow ? 22 : 40);
+
     sessionStorage.setItem(SESSION_KEY, '1');
     setShow(true);
     const timer = setTimeout(() => setShow(false), TOTAL_MS);
@@ -25,6 +29,8 @@ export default function OpeningSequence() {
 
   if (reducedMotion) return null;
 
+  const halfShift = gapPx / 2;
+
   return (
     <AnimatePresence>
       {show && (
@@ -32,78 +38,89 @@ export default function OpeningSequence() {
           key="opening"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.55, ease: EASE }}
+          transition={{ duration: 0.5, ease: EASE }}
           className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden"
           style={{ backgroundColor: '#1F3D33' }}
           aria-hidden
         >
-          <motion.div
-            className="absolute inset-0 pointer-events-none opacity-[0.045]"
+          {/* Mineral grain */}
+          <div
+            className="absolute inset-0 pointer-events-none opacity-[0.04]"
             style={{
               backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
             }}
           />
 
-          <motion.div
-            className="relative flex flex-col items-center justify-center text-center px-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.45, ease: EASE }}
-          >
-            <motion.span
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.12, duration: 0.55, ease: EASE }}
-              className="font-serif font-light text-white/90 leading-none tracking-[0.02em]"
-              style={{ fontSize: 'clamp(3.25rem, 11vw, 6.5rem)' }}
-            >
-              NA
-            </motion.span>
+          {/* Sand / quartz light in seam (behind panels) */}
+          <div
+            className="absolute inset-y-0 left-1/2 -translate-x-1/2 pointer-events-none"
+            style={{
+              width: gapPx,
+              maxWidth: '48px',
+              background: 'linear-gradient(180deg, #F6F3ED 0%, #E8DFC9 50%, #F6F3ED 100%)',
+              opacity: 0.85,
+            }}
+          />
 
-            <motion.span
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.5, ease: EASE }}
-              className="mt-2 text-[11px] md:text-[13px] uppercase tracking-[0.42em] text-white/55 font-light"
+          {/* Left panel */}
+          <motion.div
+            initial={{ x: 0 }}
+            animate={{ x: -halfShift }}
+            transition={{ delay: 0.6, duration: 0.45, ease: EASE }}
+            className="absolute inset-y-0 left-0 w-1/2"
+            style={{ backgroundColor: '#1F3D33' }}
+          />
+          {/* Right panel */}
+          <motion.div
+            initial={{ x: 0 }}
+            animate={{ x: halfShift }}
+            transition={{ delay: 0.6, duration: 0.45, ease: EASE }}
+            className="absolute inset-y-0 right-0 w-1/2"
+            style={{ backgroundColor: '#1F3D33' }}
+          />
+
+          {/* Grain on panels */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.045 }}
+            transition={{ delay: 0.05, duration: 0.4 }}
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+            }}
+          />
+
+          {/* Wordmark + seam line (centered, above panels in z-order) */}
+          <div className="relative z-10 flex flex-col items-center justify-center text-center px-6">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.15, duration: 0.45, ease: EASE }}
+              className="font-serif font-light text-white/92 tracking-tight"
+              style={{ fontSize: 'clamp(1.35rem, 4.2vw, 2rem)' }}
             >
-              Websites
-            </motion.span>
+              <span className="tracking-[0.02em]">NA</span>
+              <span className="text-white/55 font-light text-[0.55em] md:text-[0.5em] uppercase tracking-[0.38em] ml-2 md:ml-3">
+                Websites
+              </span>
+            </motion.div>
 
             <motion.div
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-              style={{ width: 1, height: 'clamp(5.5rem, 18vw, 9rem)' }}
-            >
-              <motion.div
-                initial={{ scaleY: 0, opacity: 0 }}
-                animate={{ scaleY: 1, opacity: 1 }}
-                transition={{ delay: 0.32, duration: 0.5, ease: EASE }}
-                className="absolute inset-0 w-full origin-center"
-                style={{ backgroundColor: 'rgba(246,243,237,0.22)' }}
-              />
-              <motion.div
-                initial={{ scaleX: 0, opacity: 0 }}
-                animate={{ scaleX: 1, opacity: 1 }}
-                transition={{ delay: 0.52, duration: 0.48, ease: EASE }}
-                className="absolute inset-0 origin-center"
-                style={{
-                  width: 'clamp(20px, 5vw, 52px)',
-                  left: '50%',
-                  x: '-50%',
-                  background:
-                    'linear-gradient(90deg, transparent, rgba(232,223,201,0.2) 50%, transparent)',
-                }}
-              />
-            </motion.div>
-          </motion.div>
+              initial={{ scaleY: 0 }}
+              animate={{ scaleY: 1 }}
+              transition={{ delay: 0.35, duration: 0.4, ease: EASE }}
+              className="mt-6 h-[min(28vh,200px)] w-px origin-top bg-white/18"
+            />
+          </div>
 
+          {/* One soft light sweep — barely visible */}
           <motion.div
-            initial={{ opacity: 0, scaleX: 0 }}
-            animate={{ opacity: [0, 0.35, 0], scaleX: [0, 1, 1] }}
-            transition={{ delay: 0.88, duration: 0.7, ease: 'easeInOut' }}
-            className="absolute inset-y-0 left-1/2 w-[min(42vw,520px)] -translate-x-1/2 pointer-events-none origin-center"
+            initial={{ x: '-120%', opacity: 0 }}
+            animate={{ x: '120%', opacity: [0, 0.12, 0] }}
+            transition={{ delay: 0.95, duration: 0.65, ease: 'easeInOut' }}
+            className="absolute inset-y-0 left-0 w-[45%] pointer-events-none"
             style={{
-              background:
-                'linear-gradient(90deg, transparent, rgba(246,243,237,0.09) 50%, transparent)',
+              background: 'linear-gradient(90deg, transparent, rgba(246,243,237,0.06) 50%, transparent)',
             }}
           />
         </motion.div>

@@ -1,0 +1,205 @@
+{
+  "generatedAt": "2026-05-19T08:17:57.576Z",
+  "projects": {
+    "drfuel": {
+      "slug": "drfuel",
+      "zipPath": null,
+      "zipExists": false,
+      "localPath": null,
+      "localSourceStatus": "none",
+      "hasPackageJson": false,
+      "gitRemote": null,
+      "secretHits": [],
+      "repoStatus": null
+    },
+    "dreams": {
+      "slug": "dreams",
+      "zipPath": "C:/Users/azoul/Downloads/mon-reve-calme.zip",
+      "zipExists": true,
+      "localPath": "C:\\Users\\azoul\\OneDrive\\Bureau\\NAweb\\.v5-work\\sources\\dreams",
+      "localSourceStatus": "zip_extracted",
+      "hasPackageJson": true,
+      "gitRemote": null,
+      "secretHits": [
+        "C:\\Users\\azoul\\OneDrive\\Bureau\\NAweb\\.v5-work\\sources\\dreams\\src\\pages\\Checkout.jsx"
+      ],
+      "repoStatus": "blocked_secret_detected"
+    },
+    "dropdrop": {
+      "slug": "dropdrop",
+      "zipPath": "C:/Users/azoul/Downloads/keep-dry-drop (3).zip",
+      "zipExists": true,
+      "localPath": "C:\\Users\\azoul\\OneDrive\\Bureau\\NAweb\\.v5-work\\sources\\dropdrop",
+      "localSourceStatus": "zip_extracted",
+      "hasPackageJson": true,
+      "gitRemote": null,
+      "secretHits": [],
+      "repoStatus": null
+    },
+    "plumber-template-01": {
+      "slug": "plumber-template-01",
+      "zipPath": null,
+      "zipExists": false,
+      "localPath": null,
+      "localSourceStatus": "none",
+      "hasPackageJson": false,
+      "gitRemote": null,
+      "secretHits": [],
+      "repoStatus": null
+    },
+    "plumber-template-02": {
+      "slug": "plumber-template-02",
+      "zipPath": null,
+      "zipExists": false,
+      "localPath": null,
+      "localSourceStatus": "none",
+      "hasPackageJson": false,
+      "gitRemote": null,
+      "secretHits": [],
+      "repoStatus": null
+    },
+    "plumber-template-03": {
+      "slug": "plumber-template-03",
+      "zipPath": null,
+      "zipExists": false,
+      "localPath": null,
+      "localSourceStatus": "none",
+      "hasPackageJson": false,
+      "gitRemote": null,
+      "secretHits": [],
+      "repoStatus": null
+    },
+    "volta-mare-energy": {
+      "slug": "volta-mare-energy",
+      "zipPath": "C:/Users/azoul/Downloads/volta-mare-flow.zip",
+      "zipExists": true,
+      "localPath": "C:\\Users\\azoul\\OneDrive\\Bureau\\NAweb\\.v5-work\\sources\\volta-mare-energy",
+      "localSourceStatus": "zip_extracted",
+      "hasPackageJson": true,
+      "gitRemote": null,
+      "secretHits": [],
+      "repoStatus": null
+    },
+    "arborum-materials": {
+      "slug": "arborum-materials",
+      "zipPath": "C:/Users/azoul/Downloads/arborum-surface-lab.zip",
+      "zipExists": true,
+      "localPath": "C:\\Users\\azoul\\OneDrive\\Bureau\\NAweb\\.v5-work\\sources\\arborum-materials",
+      "localSourceStatus": "zip_extracted",
+      "hasPackageJson": true,
+      "gitRemote": null,
+      "secretHits": [],
+      "repoStatus": null
+    },
+    "lumenvault-archives": {
+      "slug": "lumenvault-archives",
+      "zipPath": "C:/Users/azoul/Downloads/smooth-lumen-vault-core.zip",
+      "zipExists": true,
+      "localPath": "C:\\Users\\azoul\\OneDrive\\Bureau\\NAweb\\.v5-work\\sources\\lumenvault-archives",
+      "localSourceStatus": "zip_extracted",
+      "hasPackageJson": true,
+      "gitRemote": null,
+      "secretHits": [],
+      "repoStatus": null
+    },
+    "atelier-nova-habitat": {
+      "slug": "atelier-nova-habitat",
+      "zipPath": null,
+      "zipExists": false,
+      "localPath": null,
+      "localSourceStatus": "none",
+      "hasPackageJson": false,
+      "gitRemote": null,
+      "secretHits": [],
+      "repoStatus": null
+    },
+    "maison-oria-vet-care": {
+      "slug": "maison-oria-vet-care",
+      "zipPath": "C:/Users/azoul/Downloads/oria-pet-care.zip",
+      "zipExists": true,
+      "localPath": "C:\\Users\\azoul\\OneDrive\\Bureau\\NAweb\\.v5-work\\sources\\maison-oria-vet-care",
+      "localSourceStatus": "zip_extracted",
+      "hasPackageJson": true,
+      "gitRemote": null,
+      "secretHits": [],
+      "repoStatus": null
+    },
+    "maison-loria": {
+      "slug": "maison-loria",
+      "zipPath": "C:/Users/azoul/Downloads/maison-loria-table.zip",
+      "zipExists": true,
+      "localPath": "C:\\Users\\azoul\\OneDrive\\Bureau\\NAweb\\.v5-work\\sources\\maison-loria",
+      "localSourceStatus": "zip_extracted",
+      "hasPackageJson": true,
+      "gitRemote": null,
+      "secretHits": [],
+      "repoStatus": null
+    },
+    "na-studio-portfolio": {
+      "slug": "na-studio-portfolio",
+      "zipPath": null,
+      "zipExists": false,
+      "localPath": null,
+      "localSourceStatus": "none",
+      "hasPackageJson": false,
+      "gitRemote": null,
+      "secretHits": [],
+      "repoStatus": null
+    },
+    "questline": {
+      "slug": "questline",
+      "zipPath": null,
+      "zipExists": false,
+      "localPath": null,
+      "localSourceStatus": "none",
+      "hasPackageJson": false,
+      "gitRemote": null,
+      "secretHits": [],
+      "repoStatus": null
+    },
+    "dilemma-royale": {
+      "slug": "dilemma-royale",
+      "zipPath": null,
+      "zipExists": false,
+      "localPath": null,
+      "localSourceStatus": "none",
+      "hasPackageJson": false,
+      "gitRemote": null,
+      "secretHits": [],
+      "repoStatus": null
+    },
+    "peerless": {
+      "slug": "peerless",
+      "zipPath": null,
+      "zipExists": false,
+      "localPath": null,
+      "localSourceStatus": "none",
+      "hasPackageJson": false,
+      "gitRemote": null,
+      "secretHits": [],
+      "repoStatus": null
+    },
+    "patch-your-path": {
+      "slug": "patch-your-path",
+      "zipPath": "C:/Users/azoul/Downloads/patch-your-path.zip",
+      "zipExists": true,
+      "localPath": "C:\\Users\\azoul\\OneDrive\\Bureau\\NAweb\\.v5-work\\sources\\patch-your-path",
+      "localSourceStatus": "zip_extracted",
+      "hasPackageJson": true,
+      "gitRemote": null,
+      "secretHits": [],
+      "repoStatus": null
+    },
+    "side-a-sound": {
+      "slug": "side-a-sound",
+      "zipPath": "C:/Users/azoul/Downloads/side-a-sound.zip",
+      "zipExists": true,
+      "localPath": "C:\\Users\\azoul\\OneDrive\\Bureau\\NAweb\\.v5-work\\sources\\side-a-sound",
+      "localSourceStatus": "zip_extracted",
+      "hasPackageJson": true,
+      "gitRemote": null,
+      "secretHits": [],
+      "repoStatus": null
+    }
+  }
+}

@@ -1,9 +1,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { categories } from '@/lib/projects';
+import { workFilterOptions } from '@/lib/projects';
 import { useI18n } from '@/i18n';
 
 const miniTextures = {
+  showroom: (
+    <svg className="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 200 100" preserveAspectRatio="xMidYMid slice">
+      <rect x="20" y="20" width="36" height="22" fill="none" stroke="#3F5A4F" strokeWidth="0.4" opacity="0.5" />
+      <rect x="100" y="24" width="40" height="40" fill="none" stroke="#B5523B" strokeWidth="0.35" opacity="0.4" />
+      <circle cx="170" cy="70" r="16" fill="none" stroke="#AFC8D1" strokeWidth="0.4" opacity="0.45" />
+      <path d="M0 85 L200 82" stroke="#3F5A4F" strokeWidth="0.5" opacity="0.25" />
+    </svg>
+  ),
   local: (
     <svg className="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 200 100" preserveAspectRatio="xMidYMid slice">
       <circle cx="40" cy="72" r="2.5" fill="#3F5A4F"/>
@@ -46,15 +54,19 @@ export default function CategorySwitcher({ active, onSelect }) {
   const { t } = useI18n();
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-olive/8">
-      {categories.map((cat) => {
-        const isActive = active === cat.slug;
-        const isDark = cat.theme === 'signature';
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-px bg-olive/8">
+      {workFilterOptions.map((opt) => {
+        const isActive = active === opt.slug;
+        const isDark = opt.theme === 'signature';
+        const isShowroom = opt.slug === 'showroom';
+        const titleKey = isShowroom ? 'work.showroom' : `categories.${opt.slug}`;
+        const meta = t(opt.metaKey);
 
         return (
           <button
-            key={cat.slug}
-            onClick={() => onSelect(cat.slug)}
+            key={opt.slug}
+            type="button"
+            onClick={() => onSelect(opt.slug)}
             className={`group relative text-left py-7 md:py-10 px-6 md:px-8 transition-all duration-500 overflow-hidden ${
               isActive
                 ? isDark ? 'bg-deep-green' : 'bg-sand/70'
@@ -62,19 +74,17 @@ export default function CategorySwitcher({ active, onSelect }) {
             }`}
             style={{ minHeight: '100px' }}
           >
-            {/* Mini texture preview */}
             <div className={`absolute inset-0 transition-opacity duration-400 ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'}`}>
-              {miniTextures[cat.theme]}
+              {miniTextures[isShowroom ? 'showroom' : opt.theme]}
             </div>
 
-            {/* Active top seam draw */}
             {isActive && (
               <motion.div
                 layoutId="cat-bar"
                 className={`absolute top-0 left-0 right-0 h-[2px] ${
-                  cat.theme === 'saas' || cat.theme === 'signature'
+                  opt.theme === 'saas' || opt.theme === 'signature'
                     ? 'bg-sky-blue'
-                    : cat.theme === 'brand'
+                    : opt.theme === 'brand'
                       ? 'bg-terracotta'
                       : 'bg-olive'
                 }`}
@@ -87,7 +97,7 @@ export default function CategorySwitcher({ active, onSelect }) {
                 ? isDark ? 'text-quartz/35' : 'text-olive/50'
                 : isDark ? 'text-quartz/20' : 'text-ink/20'
             }`}>
-              {cat.meta}
+              {meta}
             </p>
 
             <h3 className={`relative text-[12px] md:text-[14px] uppercase tracking-[0.18em] font-medium transition-all duration-400 ${
@@ -95,7 +105,7 @@ export default function CategorySwitcher({ active, onSelect }) {
                 ? isDark ? 'text-quartz translate-x-1' : 'text-ink translate-x-1'
                 : isDark ? 'text-quartz/35' : 'text-ink/35'
             }`}>
-              {t(`categories.${cat.slug}`, cat.fullLabel)}
+              {t(titleKey)}
             </h3>
 
             {isActive && (

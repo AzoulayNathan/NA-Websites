@@ -29,7 +29,7 @@ export default function ContactForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`NA Websites — ${formData.projectType || 'project'} brief`);
+    const subject = encodeURIComponent('NA Websites — Project brief');
     const body = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\nType: ${formData.projectType}\nBudget: ${formData.budget}\n\n${formData.message}`,
     );

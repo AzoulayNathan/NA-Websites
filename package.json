@@ -9,7 +9,13 @@
     "lint": "eslint . --quiet",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc -p ./jsconfig.json",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "intake:audit": "node scripts/audit-project-sources.mjs",
+    "intake:discover": "node scripts/discover-github-repos.mjs",
+    "intake:connect": "node scripts/create-or-connect-github-repos.mjs",
+    "capture:assets": "node scripts/capture-project-assets.mjs",
+    "intake:sync": "node scripts/sync-project-proof.mjs",
+    "intake:all": "node scripts/run-intake-all.mjs"
   },
   "dependencies": {
     "@hello-pangea/dnd": "^17.0.0",
@@ -93,6 +99,7 @@
     "postcss": "^8.5.3",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.8.2",
-    "vite": "^6.1.0"
+    "vite": "^6.1.0",
+    "playwright": "^1.52.0"
   }
 }

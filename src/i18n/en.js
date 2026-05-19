@@ -1,12 +1,18 @@
 export default {
   nav: { work: 'Work', process: 'Process', contact: 'Contact', studio: 'Nathan / NA Studio' },
+  heroCategory: {
+    'local-business': 'LOCAL BUSINESS',
+    'product-brand': 'PRODUCT & BRAND',
+    'saas-web-app': 'SAAS / APP',
+    'signature-concept': 'SIGNATURE CONCEPT',
+  },
   hero: {
     eyebrow: 'NA Websites / Digital Showroom',
     title1: 'Websites with',
     title2: 'structure.',
     title3: 'Interfaces with',
     title4: 'atmosphere.',
-    body: 'Local sites, brand websites, SaaS interfaces and signature concepts — shaped as different worlds, not recycled templates.',
+    body: 'Local sites, product websites, web apps and signature concepts — shaped as different experiences, not recycled templates.',
     ctaPrimary: 'Explore the work',
     ctaSecondary: 'Start a project',
     scroll: 'Scroll',
@@ -30,7 +36,7 @@ export default {
     },
     saas: {
       title: 'SaaS & Web Apps',
-      headline: 'Interfaces built around use, not decoration.',
+      headline: 'Interfaces built around use, flow and structure.',
       line: 'Flow, hierarchy, product logic.',
       meta: 'FLOW / INTERFACE / LOGIC',
     },
@@ -98,6 +104,10 @@ export default {
     label: 'Work',
     title: 'Selected digital work',
     sub: 'Local websites, brand identities, SaaS interfaces and signature web concepts.',
+    showroom: 'Showroom',
+    showroomMeta: 'INDEX / FULL COLLECTION',
+    showroomIntro:
+      'Eighteen visual studies across four territories — each with its own atmosphere, none borrowed from a template shelf.',
     index: 'Index',
     ctaTitle: 'Need a web presence with a stronger point of view?',
     cta: 'Start a project',
@@ -256,12 +266,19 @@ export default {
   },
   aria: { language: 'Language' },
   notFound: { title: 'This page doesn\'t exist.', back: 'Back to home' },
-  preview: { close: 'Close', visualOnly: 'Visual preview — live link coming soon.' },
+  preview: {
+    close: 'Close',
+    visualOnly: 'Visual preview',
+    footerNote: 'Studio visual preview — structure and atmosphere ready for a verified link when published.',
+  },
   cta: {
     exploreWork: 'Explore the work',
     startProject: 'Start a project',
     viewVisual: 'View visual',
     viewPreview: 'View preview',
+    visitSite: 'Visit site',
+    viewGithub: 'View GitHub',
+    viewPdf: 'View PDF',
     seeProcess: 'See the process',
     sendBrief: 'Send the brief',
   },
@@ -270,6 +287,13 @@ export default {
     'product-brand': 'Product & Brand Websites',
     'saas-web-app': 'SaaS & Web Apps',
     'signature-concept': 'Signature Concepts',
+    showroom: 'Showroom',
+  },
+  categoriesMeta: {
+    'local-business': 'TRUST / SERVICE / CONTACT',
+    'product-brand': 'DESIRE / PRODUCT / POSITIONING',
+    'saas-web-app': 'FLOW / INTERFACE / LOGIC',
+    'signature-concept': 'ATMOSPHERE / IDENTITY / MEMORY',
   },
   projects: {
     drfuel: {
@@ -351,6 +375,20 @@ export default {
       shortPitch:
         'A playful tier-list and comparison app for ranking ideas, characters, products or concepts quickly and visually.',
       microLine: 'Visual tier lists — rank ideas fast, playfully, clearly.',
+    },
+    'patch-your-path': {
+      shortPitch:
+        'A structured web app concept for mapping choices, tracking personal progress and turning scattered intentions into clearer next steps.',
+      microLine: 'Map choices, track progress, clarify next steps.',
+      tags: ['Self-progress', 'Planning', 'App', 'Path'],
+      type: 'Guided self-progress app',
+    },
+    'side-a-sound': {
+      shortPitch:
+        'A music and audio-oriented web app concept built around mood, discovery and a more visual way to navigate sound.',
+      microLine: 'Mood-led audio discovery — visual navigation for sound.',
+      tags: ['Audio', 'Music', 'Discovery', 'Interface'],
+      type: 'Audio experience app',
     },
   },
 };
