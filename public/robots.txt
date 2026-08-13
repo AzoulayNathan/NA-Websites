@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://na-websites.pages.dev/sitemap.xml

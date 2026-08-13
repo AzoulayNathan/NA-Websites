@@ -1,0 +1,22 @@
+<svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="500" fill="#DFC8B4"/>
+  <defs>
+    <linearGradient id="fade-dropdrop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#DFC8B4" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#DFC8B4" stop-opacity="0.35"/>
+    </linearGradient>
+  </defs>
+  <circle cx="650" cy="140" r="70" fill="#B5523B" opacity="0.22"/><path d="M0 420 Q200 380 400 400 T800 380" stroke="#B5523B" stroke-width="1.4" fill="none" opacity="0.35"/><ellipse cx="680" cy="320" rx="60" ry="24" fill="#B5523B" opacity="0.28"/>
+  <rect x="0" y="0" width="10" height="500" fill="#B5523B" opacity="0.55"/>
+  <line x1="400" y1="0" x2="400" y2="500" stroke="#B5523B" stroke-width="0.6" opacity="0.15"/>
+  <rect x="40" y="48" width="500" height="360" fill="rgba(31,61,51,0.22)" rx="3" stroke="#B5523B" stroke-width="0.5" stroke-opacity="0.2"/>
+  <rect x="64" y="76" width="72" height="6" fill="#1A1A18" opacity="0.55" rx="1"/>
+  <rect x="64" y="118" width="300" height="22" fill="#1A1A18" opacity="0.75" rx="1"/>
+  <rect x="64" y="150" width="220" height="10" fill="#1A1A18" opacity="0.28" rx="1"/>
+  <rect x="64" y="182" width="128" height="36" fill="#B5523B" opacity="0.88" rx="2"/>
+  <rect x="64" y="236" width="340" height="8" fill="#1A1A18" opacity="0.14" rx="1"/>
+  <rect x="64" y="254" width="280" height="8" fill="#1A1A18" opacity="0.1" rx="1"/>
+  <rect x="0" y="400" width="800" height="100" fill="url(#fade-dropdrop)"/>
+  <text x="64" y="448" font-family="Georgia, 'Times New Roman', serif" font-size="32" fill="#1A1A18" opacity="0.95">DROPDROP</text>
+  <text x="64" y="476" font-family="system-ui, sans-serif" font-size="10" letter-spacing="4" fill="rgba(26,26,24,0.45)">PRODUCT & BRAND</text>
+</svg>

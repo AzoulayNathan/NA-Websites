@@ -1,0 +1,22 @@
+<svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="500" fill="#1F3D33"/>
+  <defs>
+    <linearGradient id="fade-drfuel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1F3D33" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#1F3D33" stop-opacity="0.35"/>
+    </linearGradient>
+  </defs>
+  <line x1="-40" y1="520" x2="840" y2="-40" stroke="#B5523B" stroke-width="2.2" opacity="0.42"/><line x1="-20" y1="480" x2="820" y2="-20" stroke="#B5523B" stroke-width="0.9" opacity="0.22"/><circle cx="620" cy="160" r="90" fill="#B5523B" opacity="0.14"/><path d="M580 280 L640 120 L660 200 L720 180" stroke="#B5523B" stroke-width="2.5" fill="none" opacity="0.5"/><rect x="520" y="300" width="200" height="10" fill="#B5523B" opacity="0.4" rx="4"/><rect x="600" y="90" width="140" height="8" fill="#C8BFA5" opacity="0.35" rx="2"/>
+  <rect x="0" y="0" width="10" height="500" fill="#B5523B" opacity="0.55"/>
+  <line x1="400" y1="0" x2="400" y2="500" stroke="#B5523B" stroke-width="0.6" opacity="0.15"/>
+  <rect x="40" y="48" width="500" height="360" fill="rgba(246,243,237,0.22)" rx="3" stroke="#B5523B" stroke-width="0.5" stroke-opacity="0.2"/>
+  <rect x="64" y="76" width="72" height="6" fill="#F6F3ED" opacity="0.55" rx="1"/>
+  <rect x="64" y="118" width="300" height="22" fill="#F6F3ED" opacity="0.75" rx="1"/>
+  <rect x="64" y="150" width="220" height="10" fill="#F6F3ED" opacity="0.28" rx="1"/>
+  <rect x="64" y="182" width="128" height="36" fill="#B5523B" opacity="0.88" rx="2"/>
+  <rect x="64" y="236" width="340" height="8" fill="#F6F3ED" opacity="0.14" rx="1"/>
+  <rect x="64" y="254" width="280" height="8" fill="#F6F3ED" opacity="0.1" rx="1"/>
+  <rect x="0" y="400" width="800" height="100" fill="url(#fade-drfuel)"/>
+  <text x="64" y="448" font-family="Georgia, 'Times New Roman', serif" font-size="32" fill="#F6F3ED" opacity="0.95">DRFuel</text>
+  <text x="64" y="476" font-family="system-ui, sans-serif" font-size="10" letter-spacing="4" fill="rgba(246,243,237,0.5)">PRODUCT & BRAND</text>
+</svg>
